@@ -31,13 +31,13 @@ export default function Contact() {
           <motion.img
             src={heroImages.about}
             alt="Contact"
-            className="w-full h-full object-cover opacity-20"
+            className="w-full h-full object-cover opacity-30"
             initial={{ scale: 1.15 }}
             animate={{ scale: 1 }}
             transition={{ duration: 8, ease: "easeOut" }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/85 to-primary/60" />
-          <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/30 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/88 via-primary/72 to-primary/45" />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary/65 via-primary/20 to-transparent" />
           <div className="absolute inset-0 opacity-5"
             style={{
               backgroundImage: "linear-gradient(rgba(255,255,255,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.4) 1px, transparent 1px)",
