@@ -127,7 +127,7 @@ export default function Letterhead2() {
             </div>
             <div style={{ color: "rgba(255,255,255,0.75)", fontSize: "10.5px", lineHeight: "1.85", display: "flex", flexDirection: "column", alignItems: "flex-end", gap: "3px" }}>
               <div style={{ display: "flex", gap: "8px", direction: "ltr" }}>
-                <span> ٧٧٧٧ ٨١٥  ٠٥٥</span>
+                <span> ٧٧٧٧ ٨١٥ ٠٥٥</span>
                 <span style={{ color: "rgba(255,255,255,0.6)" }}>|</span>
                 <span>رقم الجوال</span>
               </div>
