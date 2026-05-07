@@ -9,7 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 
 const contactInfo = [
   { icon: MapPin, title: "Visit Us", detail: "Riyadh, Saudi Arabia", sub: "King Fahd District" },
-  { icon: Phone, title: "Call Us", detail: "+966 XX XXX XXXX", sub: "Sun - Thu, 8am - 6pm" },
+  { icon: Phone, title: "Call Us", detail: "+966 50 059 2207", sub: "Sun - Thu, 8am - 6pm" },
   { icon: Mail, title: "Email Us", detail: "info@distinctmark.net", sub: "We reply within 24 hours" },
   { icon: Clock, title: "Working Hours", detail: "Sun - Thu: 8am - 6pm", sub: "Fri - Sat: Closed" },
 ];
