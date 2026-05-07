@@ -136,8 +136,16 @@ export default function Letterhead2() {
                 <span style={{ color: "rgba(255,255,255,0.6)" }}>|</span>
                 <span>السجل التجاري</span>
               </div>
-              <div>info@distinctmark.net : البريد الإلكتروني</div>
-              <div>www.distinctmark.net : الموقع</div>
+              <div style={{ display: "flex", gap: "8px", direction: "ltr" }}>
+                <span>info@distinctmark.net</span>
+                <span style={{ color: "rgba(255,255,255,0.6)" }}>|</span>
+                <span>البريد الإلكتروني</span>
+              </div>
+              <div style={{ display: "flex", gap: "8px", direction: "ltr" }}>
+                <span>www.distinctmark.net</span>
+                <span style={{ color: "rgba(255,255,255,0.6)" }}>|</span>
+                <span>الموقع</span>
+              </div>
             </div>
           </div>
         </div>
