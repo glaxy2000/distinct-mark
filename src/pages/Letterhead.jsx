@@ -151,9 +151,10 @@ export default function Letterhead() {
               DISTINCT MARK
             </div>
             <div style={{ color: "rgba(255,255,255,0.75)", fontSize: "10.5px", lineHeight: "1.85" }}>
-              <div>Tel: 055 815 7777</div>
+              <div>Tel: +966 55 815 7777</div>
               <div>Email: info@distinctmark.net</div>
               <div>Web: www.distinctmark.net</div>
+              <div>CR No. 7004765322</div>
             </div>
           </div>
         </div>
