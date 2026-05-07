@@ -1,10 +1,33 @@
 import React, { useRef, useState } from "react";
-import { Download, FileImage, FileText } from "lucide-react";
+import { FileImage, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import html2canvas from "html2canvas";
 import { jsPDF } from "jspdf";
 
-const LOGO_URL = "https://media.base44.com/images/public/69fc5488f82bfea7ed1807c9/a97d0cc9c_DMLogo.png";
+// Same SVG logo as Navbar (white variant for dark background)
+function LogoSVG() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 200 44"
+      style={{ height: "52px", width: "auto" }}
+      aria-label="Distinct Mark"
+    >
+      <g transform="translate(0, 2)">
+        <polygon points="20,0 40,20 20,40 0,20" fill="none" stroke="#E8832A" strokeWidth="2" />
+        <polygon points="20,8 32,20 20,32 8,20" fill="#E8832A" opacity="0.15" />
+        <text x="20" y="25" textAnchor="middle" fontSize="14" fontWeight="800" fontFamily="'Open Sans', sans-serif" letterSpacing="-1">
+          <tspan fill="#E8832A">D</tspan><tspan fill="#FFFFFF">M</tspan>
+        </text>
+      </g>
+      <line x1="50" y1="8" x2="50" y2="36" stroke="#E8832A" strokeWidth="1.2" strokeOpacity="0.4" />
+      <g transform="translate(58, 0)">
+        <text y="20" fontSize="12.5" fontWeight="800" fontFamily="'Open Sans', sans-serif" fill="#E8832A" letterSpacing="3">DISTINCT</text>
+        <text y="36" fontSize="12.5" fontWeight="700" fontFamily="'Open Sans', sans-serif" fill="#FFFFFF" letterSpacing="5.5">MARK</text>
+      </g>
+    </svg>
+  );
+}
 
 export default function Letterhead() {
   const letterRef = useRef(null);
@@ -14,31 +37,42 @@ export default function Letterhead() {
     return await html2canvas(letterRef.current, {
       scale: 3,
       useCORS: true,
+      allowTaint: true,
       backgroundColor: "#ffffff",
       logging: false,
+      foreignObjectRendering: false,
     });
   };
 
   const downloadJPG = async () => {
     setDownloading("jpg");
-    const canvas = await captureCanvas();
-    const link = document.createElement("a");
-    link.download = "DistinctMark_Letterhead.jpg";
-    link.href = canvas.toDataURL("image/jpeg", 0.95);
-    link.click();
-    setDownloading(null);
+    try {
+      const canvas = await captureCanvas();
+      const dataUrl = canvas.toDataURL("image/jpeg", 0.95);
+      const link = document.createElement("a");
+      link.href = dataUrl;
+      link.download = "DistinctMark_Letterhead.jpg";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } finally {
+      setDownloading(null);
+    }
   };
 
   const downloadPDF = async () => {
     setDownloading("pdf");
-    const canvas = await captureCanvas();
-    const imgData = canvas.toDataURL("image/jpeg", 0.95);
-    const pdf = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4" });
-    const pdfWidth = pdf.internal.pageSize.getWidth();
-    const pdfHeight = pdf.internal.pageSize.getHeight();
-    pdf.addImage(imgData, "JPEG", 0, 0, pdfWidth, pdfHeight);
-    pdf.save("DistinctMark_Letterhead.pdf");
-    setDownloading(null);
+    try {
+      const canvas = await captureCanvas();
+      const imgData = canvas.toDataURL("image/jpeg", 0.95);
+      const pdf = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4" });
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = pdf.internal.pageSize.getHeight();
+      pdf.addImage(imgData, "JPEG", 0, 0, pdfWidth, pdfHeight);
+      pdf.save("DistinctMark_Letterhead.pdf");
+    } finally {
+      setDownloading(null);
+    }
   };
 
   return (
@@ -66,126 +100,119 @@ export default function Letterhead() {
         </div>
       </div>
 
-      {/* A4 Letterhead */}
+      {/* A4 Letterhead — fixed height, no empty lines */}
       <div
         ref={letterRef}
-        className="mx-auto bg-white"
         style={{
           width: "794px",
-          minHeight: "1123px",
+          height: "1123px",
+          margin: "0 auto",
+          background: "#ffffff",
           fontFamily: "'Open Sans', sans-serif",
           position: "relative",
           overflow: "hidden",
+          display: "flex",
+          flexDirection: "column",
         }}
       >
         {/* Top accent bar */}
-        <div style={{ height: "6px", background: "linear-gradient(90deg, #1a2340 60%, #E8832A 100%)" }} />
+        <div style={{ height: "6px", background: "linear-gradient(90deg, #1a2340 60%, #E8832A 100%)", flexShrink: 0 }} />
 
         {/* Header */}
-        <div
-          style={{
-            background: "#1a2340",
-            padding: "28px 48px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          {/* Logo */}
-          <img
-            src={LOGO_URL}
-            alt="Distinct Mark"
-            crossOrigin="anonymous"
-            style={{ height: "70px", objectFit: "contain", filter: "brightness(0) invert(1)" }}
-          />
-
-          {/* Contact strip */}
+        <div style={{ background: "#1a2340", padding: "22px 48px", display: "flex", alignItems: "center", justifyContent: "space-between", flexShrink: 0 }}>
+          <LogoSVG />
           <div style={{ textAlign: "right" }}>
-            <div style={{ color: "#E8832A", fontWeight: "700", fontSize: "13px", letterSpacing: "2px", textTransform: "uppercase", marginBottom: "6px" }}>
+            <div style={{ color: "#E8832A", fontWeight: "700", fontSize: "12px", letterSpacing: "2px", textTransform: "uppercase", marginBottom: "5px" }}>
               DISTINCT MARK
             </div>
-            <div style={{ color: "rgba(255,255,255,0.75)", fontSize: "11px", lineHeight: "1.9" }}>
-              <div>📞 055 815 7777</div>
-              <div>✉️ info@distinctmark.net</div>
-              <div>🌐 www.distinctmark.net</div>
+            <div style={{ color: "rgba(255,255,255,0.75)", fontSize: "10.5px", lineHeight: "1.85" }}>
+              <div>Tel: 055 815 7777</div>
+              <div>Email: info@distinctmark.net</div>
+              <div>Web: www.distinctmark.net</div>
             </div>
           </div>
         </div>
 
         {/* Orange divider */}
-        <div style={{ height: "4px", background: "#E8832A" }} />
+        <div style={{ height: "4px", background: "#E8832A", flexShrink: 0 }} />
 
         {/* Address bar */}
-        <div
-          style={{
-            background: "#f7f8fa",
-            padding: "10px 48px",
-            display: "flex",
-            alignItems: "center",
-            gap: "8px",
-            borderBottom: "1px solid #e5e7eb",
-          }}
-        >
-          <span style={{ color: "#E8832A", fontSize: "12px" }}>📍</span>
-          <span style={{ color: "#6b7280", fontSize: "11.5px" }}>
+        <div style={{ background: "#f7f8fa", padding: "8px 48px", display: "flex", alignItems: "center", gap: "8px", borderBottom: "1px solid #e5e7eb", flexShrink: 0 }}>
+          <span style={{ color: "#E8832A", fontSize: "11px", fontWeight: "bold" }}>&#9679;</span>
+          <span style={{ color: "#6b7280", fontSize: "11px" }}>
             RURD7110, 2475, Ar Rimal, Riyadh 13266, Kingdom of Saudi Arabia
           </span>
         </div>
 
-        {/* Body area */}
-        <div style={{ padding: "48px 48px 0" }}>
-          {/* Date & Ref line placeholders */}
-          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "32px" }}>
+        {/* Body */}
+        <div style={{ padding: "32px 48px 0", flex: 1 }}>
+          {/* Ref & Date */}
+          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "20px" }}>
             <div>
-              <div style={{ fontSize: "11px", color: "#9ca3af", textTransform: "uppercase", letterSpacing: "1px" }}>Reference No.</div>
-              <div style={{ marginTop: "4px", width: "160px", borderBottom: "1px solid #d1d5db", height: "22px" }} />
+              <div style={{ fontSize: "10px", color: "#9ca3af", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "2px" }}>Reference No.</div>
+              <div style={{ width: "180px", borderBottom: "1.5px solid #d1d5db", paddingBottom: "4px" }} />
             </div>
             <div style={{ textAlign: "right" }}>
-              <div style={{ fontSize: "11px", color: "#9ca3af", textTransform: "uppercase", letterSpacing: "1px" }}>Date</div>
-              <div style={{ marginTop: "4px", width: "160px", borderBottom: "1px solid #d1d5db", height: "22px" }} />
+              <div style={{ fontSize: "10px", color: "#9ca3af", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "2px" }}>Date</div>
+              <div style={{ width: "180px", borderBottom: "1.5px solid #d1d5db", paddingBottom: "4px" }} />
             </div>
           </div>
 
-          {/* Subject line */}
-          <div style={{ marginBottom: "28px" }}>
-            <div style={{ fontSize: "11px", color: "#9ca3af", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "4px" }}>Subject</div>
-            <div style={{ borderBottom: "1px solid #d1d5db", height: "22px", width: "100%" }} />
+          {/* Subject */}
+          <div style={{ marginBottom: "18px" }}>
+            <div style={{ fontSize: "10px", color: "#9ca3af", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "2px" }}>Subject</div>
+            <div style={{ borderBottom: "1.5px solid #d1d5db", paddingBottom: "4px" }} />
+          </div>
+
+          {/* To */}
+          <div style={{ marginBottom: "18px" }}>
+            <div style={{ fontSize: "10px", color: "#9ca3af", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "2px" }}>To</div>
+            <div style={{ borderBottom: "1.5px solid #d1d5db", paddingBottom: "4px" }} />
           </div>
 
           {/* Salutation */}
-          <div style={{ fontSize: "13px", color: "#374151", marginBottom: "20px" }}>Dear Sir / Madam,</div>
+          <div style={{ fontSize: "12.5px", color: "#374151", marginBottom: "16px", fontWeight: "500" }}>Dear Sir / Madam,</div>
 
-          {/* Body lines */}
-          {[...Array(16)].map((_, i) => (
-            <div
-              key={i}
-              style={{
-                borderBottom: "1px solid #e5e7eb",
-                height: "28px",
-                marginBottom: "4px",
-                width: i === 15 ? "60%" : "100%",
-              }}
-            />
-          ))}
+          {/* Body content area — solid ruled lines, no gaps */}
+          <div style={{ marginBottom: "24px" }}>
+            {[...Array(18)].map((_, i) => (
+              <div
+                key={i}
+                style={{
+                  height: "26px",
+                  borderBottom: "1px solid #e5e7eb",
+                  width: i === 17 ? "55%" : "100%",
+                }}
+              />
+            ))}
+          </div>
 
-          {/* Signature block */}
-          <div style={{ marginTop: "48px", display: "flex", justifyContent: "space-between" }}>
+          {/* Closing */}
+          <div style={{ fontSize: "12.5px", color: "#374151", marginBottom: "24px" }}>Yours sincerely,</div>
+
+          {/* Signature & Stamp — stamp positioned clearly above footer */}
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "0" }}>
+            {/* Signature */}
             <div>
-              <div style={{ fontSize: "11px", color: "#9ca3af", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "40px" }}>Authorized Signature</div>
-              <div style={{ width: "200px", borderTop: "1px solid #374151" }} />
-              <div style={{ fontSize: "11px", color: "#374151", marginTop: "6px" }}>Name & Title</div>
+              <div style={{ height: "50px" }} />
+              <div style={{ width: "200px", borderTop: "1.5px solid #374151" }} />
+              <div style={{ fontSize: "11px", color: "#374151", marginTop: "5px" }}>Authorized Signatory</div>
+              <div style={{ fontSize: "10px", color: "#9ca3af", marginTop: "2px" }}>Name & Designation</div>
             </div>
-            <div style={{ textAlign: "right" }}>
-              <div style={{ fontSize: "11px", color: "#9ca3af", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "40px" }}>Company Stamp</div>
+
+            {/* Company Stamp */}
+            <div style={{ textAlign: "center", marginBottom: "8px" }}>
+              <div style={{ fontSize: "10px", color: "#9ca3af", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "8px" }}>Company Stamp</div>
               <div
                 style={{
-                  width: "100px",
-                  height: "100px",
+                  width: "110px",
+                  height: "110px",
                   borderRadius: "50%",
                   border: "2px dashed #d1d5db",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
+                  margin: "0 auto",
                 }}
               >
                 <span style={{ fontSize: "10px", color: "#d1d5db" }}>STAMP</span>
@@ -194,32 +221,16 @@ export default function Letterhead() {
           </div>
         </div>
 
-        {/* Footer */}
-        <div
-          style={{
-            position: "absolute",
-            bottom: 0,
-            left: 0,
-            right: 0,
-          }}
-        >
-          {/* Orange top accent */}
+        {/* Footer — pinned to bottom */}
+        <div style={{ marginTop: "auto", flexShrink: 0 }}>
           <div style={{ height: "3px", background: "#E8832A" }} />
-          <div
-            style={{
-              background: "#1a2340",
-              padding: "14px 48px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}
-          >
-            <div style={{ color: "rgba(255,255,255,0.5)", fontSize: "10px" }}>
+          <div style={{ background: "#1a2340", padding: "12px 48px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+            <div style={{ color: "rgba(255,255,255,0.5)", fontSize: "9.5px" }}>
               © 2025 Distinct Mark. All Rights Reserved.
             </div>
-            <div style={{ display: "flex", gap: "20px" }}>
-              {["Construction", "Electrical & Mechanical", "IT Services", "Catering", "Trading", "Transport", "Equipment"].map((s) => (
-                <span key={s} style={{ color: "rgba(255,255,255,0.35)", fontSize: "9px" }}>{s}</span>
+            <div style={{ display: "flex", gap: "14px" }}>
+              {["Construction", "E&M", "IT Services", "Catering", "Trading", "Transport", "Equipment"].map((s) => (
+                <span key={s} style={{ color: "rgba(255,255,255,0.35)", fontSize: "8.5px" }}>{s}</span>
               ))}
             </div>
           </div>
