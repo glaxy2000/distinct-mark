@@ -78,8 +78,8 @@ export default function Letterhead() {
   return (
     <div className="min-h-screen bg-gray-100 py-10 px-4">
       {/* Controls */}
-      <div className="max-w-[794px] mx-auto mb-6 flex items-center justify-between">
-        <h1 className="text-xl font-bold text-gray-700">Company Letterhead</h1>
+      <div className="max-w-[794px] mx-auto mb-6">
+        <h1 className="text-xl font-bold text-gray-700 mb-4">Company Letterhead</h1>
         <div className="flex gap-3">
           <Button
             onClick={downloadJPG}
