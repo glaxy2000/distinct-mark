@@ -126,10 +126,10 @@ export default function Letterhead2() {
               شركة ديستينكت مارك
             </div>
             <div style={{ color: "rgba(255,255,255,0.75)", fontSize: "10.5px", lineHeight: "1.85" }}>
-              <div>هاتف: ٩٦٦+ ٥٥ ٨١٥ ٧٧٧٧</div>
-              <div>البريد الإلكتروني: info@distinctmark.net</div>
-              <div>الموقع: www.distinctmark.net</div>
-              <div>السجل التجاري: ٧٠٠٤٧٦٥٣٢٢</div>
+              <div>+٩٦٦ ٥٥ ٨١٥ ٧٧٧٧ رقم الجوال</div>
+              <div>info@distinctmark.net : البريد الإلكتروني</div>
+              <div>www.distinctmark.net : الموقع</div>
+              <div>٧٠٠٤٧٦٥٣٢٢ : السجل التجاري</div>
             </div>
           </div>
         </div>
