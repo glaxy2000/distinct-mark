@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { MapPin, Phone, Mail, ArrowRight } from "lucide-react";
-
-const logo = "https://media.base44.com/images/public/user_6979fba9240871174a47fb57/7dfc1673f_DistinctMark_Logo.jpeg";
+import Logo from "@/components/Logo";
 
 export default function Footer() {
   return (
@@ -11,11 +10,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-3 mb-6">
-              <img src={logo} alt="Distinct Mark" className="h-12 w-auto rounded-lg" />
-              <span className="font-sora text-xl font-bold">
-                Distinct<span className="text-secondary">Mark</span>
-              </span>
+            <div className="mb-6">
+              <Logo variant="light" />
             </div>
             <p className="text-primary-foreground/60 text-sm leading-relaxed">
               A multi-disciplinary group delivering excellence across construction, engineering, IT, catering, trading, transportation, and equipment rental.

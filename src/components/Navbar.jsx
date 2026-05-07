@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-
-const logo = "https://media.base44.com/images/public/user_6979fba9240871174a47fb57/7dfc1673f_DistinctMark_Logo.jpeg";
+import Logo from "@/components/Logo";
 
 const navLinks = [
   { label: "Home", path: "/" },
@@ -37,13 +36,8 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
-        <Link to="/" className="flex items-center gap-3">
-          <img src={logo} alt="Distinct Mark" className="h-12 w-auto rounded-lg" />
-          <div className="hidden sm:block">
-            <span className={`font-sora text-xl font-bold ${scrolled ? "text-foreground" : "text-white"}`}>
-              Distinct<span className="text-secondary">Mark</span>
-            </span>
-          </div>
+        <Link to="/" className="flex items-center">
+          <Logo variant={scrolled ? "dark" : "light"} />
         </Link>
 
         {/* Desktop Nav */}
