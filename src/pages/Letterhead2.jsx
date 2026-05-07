@@ -119,7 +119,7 @@ export default function Letterhead2() {
         <div style={{
           position: "absolute",
           top: "50%",
-          left: "60%",
+          left: "50%",
           transform: "translate(-50%, -50%)",
           opacity: 0.05,
           pointerEvents: "none",
@@ -144,22 +144,20 @@ export default function Letterhead2() {
         {/* Top accent bar */}
         <div style={{ height: "6px", background: "linear-gradient(90deg, #E8832A 0%, #1a2340 40%)", flexShrink: 0 }} />
 
-        {/* Header */}
-        <div style={{ background: "#1a2340", padding: "22px 48px", display: "flex", alignItems: "center", justifyContent: "space-between", flexShrink: 0 }}>
-          {/* Arabic company info on the right (RTL: this is the start) */}
+        {/* Header — logo always on left, Arabic info on right, same as English */}
+        <div style={{ background: "#1a2340", padding: "22px 48px", display: "flex", alignItems: "center", justifyContent: "space-between", flexShrink: 0, direction: "ltr" }}>
+          <LogoSVG />
           <div style={{ textAlign: "right" }}>
             <div style={{ color: "#E8832A", fontWeight: "700", fontSize: "14px", letterSpacing: "1px", marginBottom: "5px" }}>
               شركة ديستينكت مارك
             </div>
-            <div style={{ color: "rgba(255,255,255,0.75)", fontSize: "10.5px", lineHeight: "1.85", textAlign: "right" }}>
+            <div style={{ color: "rgba(255,255,255,0.75)", fontSize: "10.5px", lineHeight: "1.85" }}>
               <div>هاتف: ٩٦٦+ ٥٥ ٨١٥ ٧٧٧٧</div>
               <div>البريد الإلكتروني: info@distinctmark.net</div>
               <div>الموقع: www.distinctmark.net</div>
               <div>السجل التجاري: ٧٠٠٤٧٦٥٣٢٢</div>
             </div>
           </div>
-          {/* Logo on the left (RTL: this is the end) */}
-          <LogoSVG />
         </div>
 
         {/* Orange divider */}
