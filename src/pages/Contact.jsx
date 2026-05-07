@@ -36,8 +36,8 @@ export default function Contact() {
             animate={{ scale: 1 }}
             transition={{ duration: 8, ease: "easeOut" }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/88 via-primary/75 to-primary/55" />
-          <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-primary/20 to-transparent" />
+          <div className="absolute inset-0 bg-primary/80" />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/60 via-transparent to-transparent" />
           <div className="absolute inset-0 opacity-5"
             style={{
               backgroundImage: "linear-gradient(rgba(255,255,255,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.4) 1px, transparent 1px)",
