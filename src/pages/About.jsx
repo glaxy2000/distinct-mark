@@ -43,7 +43,7 @@ export default function About() {
               Built on a Legacy of <span className="text-secondary">Excellence</span>
             </h2>
             <p className="text-muted-foreground mt-6 leading-relaxed">
-              Distinct Mark was established with a vision to provide integrated, multi-sector services that meet the evolving needs of businesses and communities. Over the years, we have grown into a diversified group operating across seven key divisions.
+              Distinct Mark was established in Riyadh, Saudi Arabia with a vision to provide integrated, multi-sector services that meet the evolving needs of businesses and communities. Over the years, we have grown into a diversified group operating across seven key divisions throughout the Kingdom.
             </p>
             <p className="text-muted-foreground mt-4 leading-relaxed">
               Our commitment to quality, safety, and customer satisfaction has earned us a reputation as a trusted partner for projects of all scales. From construction and infrastructure to catering and IT solutions, we bring the same level of dedication and expertise to every engagement.

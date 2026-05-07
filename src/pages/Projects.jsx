@@ -14,15 +14,15 @@ const imageMap = {
 };
 
 const projects = [
-  { title: "Labour Camp Complex — 5,000 Capacity", division: "construction", location: "Abu Dhabi, UAE", year: "2024", description: "Full construction, MEP, and interior fit-out of a 5,000-person labour accommodation facility." },
-  { title: "Industrial HVAC Installation", division: "electrical", location: "Dubai Industrial City", year: "2024", description: "Complete HVAC system design, supply, and installation for a 50,000 sqm industrial warehouse." },
-  { title: "Enterprise Network & Security Upgrade", division: "it", location: "Dubai, UAE", year: "2023", description: "Full IT infrastructure upgrade including network, CCTV, and access control for a corporate HQ." },
-  { title: "Camp Catering — 3,000 Meals/Day", division: "catering", location: "ADNOC Project Site", year: "2024", description: "Full-scale industrial catering operations serving 3,000 meals per day across 3 shifts." },
-  { title: "Building Materials Supply Chain", division: "trading", location: "UAE & GCC", year: "2023", description: "Bulk supply of construction materials including steel, cement, and finishing materials." },
-  { title: "Fleet Management — 200 Vehicles", division: "transport", location: "UAE Wide", year: "2024", description: "Staff transportation fleet management for a major construction company with 200+ vehicles." },
-  { title: "Heavy Equipment Rental Fleet", division: "equipment", location: "Abu Dhabi", year: "2023", description: "Long-term rental of excavators, cranes, and generators for a large-scale infrastructure project." },
-  { title: "Commercial Building Renovation", division: "construction", location: "Sharjah, UAE", year: "2023", description: "Complete renovation including structural repair, interior fit-out, and MEP upgrades." },
-  { title: "Smart Security System Deployment", division: "it", location: "Dubai Marina", year: "2024", description: "AI-powered CCTV and integrated access control system for a premium residential tower." },
+  { title: "Labour Camp Complex — 5,000 Capacity", division: "construction", location: "Riyadh, Saudi Arabia", year: "2024", description: "Full construction, MEP, and interior fit-out of a 5,000-person labour accommodation facility." },
+  { title: "Industrial HVAC Installation", division: "electrical", location: "Jeddah Industrial City", year: "2024", description: "Complete HVAC system design, supply, and installation for a 50,000 sqm industrial warehouse." },
+  { title: "Enterprise Network & Security Upgrade", division: "it", location: "Riyadh, Saudi Arabia", year: "2023", description: "Full IT infrastructure upgrade including network, CCTV, and access control for a corporate HQ." },
+  { title: "Camp Catering — 3,000 Meals/Day", division: "catering", location: "ARAMCO Project Site, Dhahran", year: "2024", description: "Full-scale industrial catering operations serving 3,000 meals per day across 3 shifts." },
+  { title: "Building Materials Supply Chain", division: "trading", location: "KSA & GCC", year: "2023", description: "Bulk supply of construction materials including steel, cement, and finishing materials." },
+  { title: "Fleet Management — 200 Vehicles", division: "transport", location: "Kingdom-Wide, KSA", year: "2024", description: "Staff transportation fleet management for a major construction company with 200+ vehicles." },
+  { title: "Heavy Equipment Rental Fleet", division: "equipment", location: "Riyadh, Saudi Arabia", year: "2023", description: "Long-term rental of excavators, cranes, and generators for a large-scale infrastructure project." },
+  { title: "Commercial Building Renovation", division: "construction", location: "Jeddah, Saudi Arabia", year: "2023", description: "Complete renovation including structural repair, interior fit-out, and MEP upgrades." },
+  { title: "Smart Security System Deployment", division: "it", location: "King Abdullah Financial District", year: "2024", description: "AI-powered CCTV and integrated access control system for a premium commercial tower." },
 ];
 
 const categories = ["All", ...services.map(s => s.shortTitle)];

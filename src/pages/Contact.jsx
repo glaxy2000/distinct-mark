@@ -8,10 +8,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 const contactInfo = [
-  { icon: MapPin, title: "Visit Us", detail: "United Arab Emirates", sub: "Dubai / Abu Dhabi" },
-  { icon: Phone, title: "Call Us", detail: "+971 XX XXX XXXX", sub: "Mon - Sat, 8am - 6pm" },
+  { icon: MapPin, title: "Visit Us", detail: "Riyadh, Saudi Arabia", sub: "King Fahd District" },
+  { icon: Phone, title: "Call Us", detail: "+966 XX XXX XXXX", sub: "Sun - Thu, 8am - 6pm" },
   { icon: Mail, title: "Email Us", detail: "info@distinctmark.net", sub: "We reply within 24 hours" },
-  { icon: Clock, title: "Working Hours", detail: "Sun - Thu: 8am - 6pm", sub: "Sat: 9am - 1pm" },
+  { icon: Clock, title: "Working Hours", detail: "Sun - Thu: 8am - 6pm", sub: "Fri - Sat: Closed" },
 ];
 
 export default function Contact() {
@@ -151,14 +151,14 @@ export default function Contact() {
           <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="flex flex-col gap-8">
             <div className="rounded-2xl overflow-hidden shadow-xl border border-border/50 flex-1 min-h-[400px]">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d462560.68279569526!2d54.89782752617868!3d25.076280438819913!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43496ad9c645%3A0xbde66e5084295162!2sDubai%20-%20United%20Arab%20Emirates!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3624.494785960353!2d46.67529327616856!3d24.68854637789445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f03890d489399%3A0xba974d1c98e79fd5!2sKing%20Fahd%20District%2C%20Riyadh%20Saudi%20Arabia!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s"
                 width="100%"
                 height="100%"
                 style={{ border: 0, minHeight: 400 }}
                 allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Location Map"
+                title="Riyadh, Saudi Arabia Map"
               />
             </div>
           </motion.div>

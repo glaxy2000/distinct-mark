@@ -68,11 +68,11 @@ export default function Footer() {
             <div className="space-y-4">
               <div className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 mt-1 text-secondary shrink-0" />
-                <p className="text-primary-foreground/60 text-sm">United Arab Emirates</p>
+                <p className="text-primary-foreground/60 text-sm">Riyadh, Saudi Arabia</p>
               </div>
               <div className="flex items-start gap-3">
                 <Phone className="w-4 h-4 mt-1 text-secondary shrink-0" />
-                <p className="text-primary-foreground/60 text-sm">+971 XX XXX XXXX</p>
+                <p className="text-primary-foreground/60 text-sm">+966 XX XXX XXXX</p>
               </div>
               <div className="flex items-start gap-3">
                 <Mail className="w-4 h-4 mt-1 text-secondary shrink-0" />
