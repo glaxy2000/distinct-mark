@@ -25,13 +25,13 @@ export default function Services() {
           <motion.img
             src={heroImages.electrical}
             alt="Services"
-            className="w-full h-full object-cover opacity-20"
+            className="w-full h-full object-cover opacity-35"
             initial={{ scale: 1.15 }}
             animate={{ scale: 1 }}
             transition={{ duration: 8, ease: "easeOut" }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/85 to-primary/70" />
-          <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/40 to-primary/20" />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/92 via-primary/70 to-primary/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent" />
           <div className="absolute inset-0 opacity-5"
             style={{
               backgroundImage: "linear-gradient(rgba(255,255,255,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.4) 1px, transparent 1px)",
