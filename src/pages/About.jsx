@@ -225,6 +225,100 @@ export default function About() {
         </div>
       </section>
 
+      {/* Leadership Section */}
+      <section className="py-24 bg-background overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
+            <span className="text-secondary font-semibold text-sm uppercase tracking-widest">Leadership</span>
+            <h2 className="font-playfair text-3xl md:text-4xl font-bold text-foreground mt-3">
+              Meet Our <span className="text-secondary">Leader</span>
+            </h2>
+          </motion.div>
+
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Photo */}
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="relative"
+            >
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+                <img
+                  src="https://media.base44.com/images/public/69fc5488f82bfea7ed1807c9/44c5daef1_Mohmmad.jpg"
+                  alt="Mohammad — CEO & Founder"
+                  className="w-full object-cover"
+                  style={{ maxHeight: "520px", objectPosition: "top" }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent" />
+              </div>
+              {/* Decorative accent */}
+              <div className="absolute -bottom-4 -right-4 w-32 h-32 rounded-3xl bg-secondary/15 -z-10" />
+              <div className="absolute -top-4 -left-4 w-24 h-24 rounded-3xl bg-accent/10 -z-10" />
+              {/* Name badge */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4 }}
+                className="absolute bottom-6 left-6 right-6 bg-white/10 backdrop-blur-md rounded-2xl px-5 py-4 border border-white/20"
+              >
+                <p className="font-playfair text-xl font-bold text-white">Mohammad</p>
+                <p className="text-secondary text-sm font-semibold mt-0.5">CEO & Founder — Distinct Mark</p>
+              </motion.div>
+            </motion.div>
+
+            {/* Bio */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+            >
+              <span className="inline-flex items-center gap-2 px-4 py-2 bg-secondary/10 rounded-full text-secondary text-xs font-bold uppercase tracking-widest mb-6 border border-secondary/20">
+                <span className="w-2 h-2 bg-secondary rounded-full animate-pulse" />
+                Founder & Chief Executive
+              </span>
+              <h3 className="font-playfair text-3xl md:text-4xl font-bold text-foreground leading-tight">
+                Visionary Behind <span className="text-secondary">Distinct Mark</span>
+              </h3>
+              <p className="text-muted-foreground mt-6 leading-relaxed text-base">
+                Mohammad is the founder and driving force behind Distinct Mark — a multi-disciplinary services group headquartered in Riyadh, Saudi Arabia. With a bold entrepreneurial spirit and deep understanding of the Kingdom's industrial landscape, he built Distinct Mark from the ground up into a diversified enterprise spanning seven key divisions.
+              </p>
+              <p className="text-muted-foreground mt-4 leading-relaxed text-base">
+                Under his leadership, Distinct Mark has delivered over 500 projects across construction, electrical & mechanical, IT, catering, trading, transportation, and equipment rental — serving oil & gas, infrastructure, and corporate clients nationwide. His vision is rooted in quality, safety, and sustainable growth aligned with Saudi Arabia's Vision 2030.
+              </p>
+              <p className="text-muted-foreground mt-4 leading-relaxed text-base">
+                Mohammad leads with integrity, empowering a team of 2,000+ professionals to uphold the group's commitment to excellence on every project, every day.
+              </p>
+
+              {/* Key highlights */}
+              <div className="grid grid-cols-2 gap-4 mt-8">
+                {[
+                  { value: "15+", label: "Years of Vision", color: "#E8832A" },
+                  { value: "500+", label: "Projects Delivered", color: "#3B5998" },
+                  { value: "7", label: "Divisions Built", color: "#0EA5E9" },
+                  { value: "2,000+", label: "Team Led", color: "#16A34A" },
+                ].map((s, i) => (
+                  <motion.div
+                    key={s.label}
+                    initial={{ opacity: 0, scale: 0.85 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.2 + i * 0.08 }}
+                    className="rounded-2xl p-4 border border-border/50 bg-card text-center hover:shadow-md transition-all"
+                  >
+                    <p className="font-playfair text-2xl font-bold" style={{ color: s.color }}>{s.value}</p>
+                    <p className="text-muted-foreground text-xs mt-1">{s.label}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Values */}
       <section className="py-24 bg-muted/30">
         <div className="max-w-7xl mx-auto px-6">
