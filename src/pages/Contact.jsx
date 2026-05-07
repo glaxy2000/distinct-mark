@@ -31,7 +31,7 @@ export default function Contact() {
           <motion.img
             src={heroImages.about}
             alt="Contact"
-            className="w-full h-full object-cover opacity-25"
+            className="w-full h-full object-cover opacity-15"
             initial={{ scale: 1.15 }}
             animate={{ scale: 1 }}
             transition={{ duration: 8, ease: "easeOut" }}
