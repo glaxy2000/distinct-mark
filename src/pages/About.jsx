@@ -264,7 +264,7 @@ export default function About() {
                 transition={{ delay: 0.4 }}
                 className="absolute bottom-6 left-6 right-6 bg-white/10 backdrop-blur-md rounded-2xl px-5 py-4 border border-white/20"
               >
-                <p className="font-sora text-xl font-bold text-white">Mohammad</p>
+                <p className="font-sora text-xl font-bold text-white">MOHAMMED AYIDH ALMUTARI</p>
                 <p className="text-secondary text-sm font-semibold mt-0.5">CEO & Founder — Distinct Mark</p>
               </motion.div>
             </motion.div>
