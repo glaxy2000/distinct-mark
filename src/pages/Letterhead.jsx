@@ -125,7 +125,7 @@ export default function Letterhead() {
           pointerEvents: "none",
           zIndex: 0,
         }}>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 44" style={{ height: "300px", width: "auto" }}>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 44" style={{ height: "120px", width: "auto" }}>
             <g transform="translate(0, 2)">
               <polygon points="20,0 40,20 20,40 0,20" fill="none" stroke="#1a2340" strokeWidth="2" />
               <polygon points="20,8 32,20 20,32 8,20" fill="#1a2340" opacity="0.5" />
