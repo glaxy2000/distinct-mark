@@ -44,7 +44,7 @@ export default function StatsBar() {
       <div className="bg-card rounded-2xl shadow-2xl border border-border/50 p-8 grid grid-cols-2 md:grid-cols-4 gap-6">
         {stats.map((stat, i) => (
           <div key={i} className="text-center">
-            <p className="font-playfair text-3xl md:text-4xl font-bold text-secondary">
+            <p className="font-sora text-3xl md:text-4xl font-bold text-secondary">
               <AnimatedCounter value={stat.value} isVisible={visible} />
             </p>
             <p className="text-muted-foreground text-sm mt-1">{stat.label}</p>

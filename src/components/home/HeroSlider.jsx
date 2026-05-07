@@ -210,7 +210,7 @@ export default function HeroSlider() {
           key={current}
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="font-playfair text-5xl font-bold text-white/15"
+          className="font-sora text-5xl font-bold text-white/15"
         >
           {String(current + 1).padStart(2, "0")}
         </motion.span>
@@ -266,7 +266,7 @@ export default function HeroSlider() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="font-playfair text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-bold text-white leading-tight"
+                className="font-sora text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-bold text-white leading-tight"
               >
                 {slide.title}
                 <br />
@@ -340,7 +340,7 @@ export default function HeroSlider() {
                     initial={{ scale: 0.5, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ delay: 0.5 + i * 0.12, type: "spring" }}
-                    className="font-playfair text-2xl font-bold drop-shadow"
+                    className="font-sora text-2xl font-bold drop-shadow"
                     style={{ color: slide.accent }}
                   >
                     {stat.value}

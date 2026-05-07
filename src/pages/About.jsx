@@ -61,7 +61,7 @@ export default function About() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight"
+              className="font-sora text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight"
             >
               Who We <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-amber-300">Are</span>
             </motion.h1>
@@ -96,7 +96,7 @@ export default function About() {
                 className="rounded-2xl p-5 backdrop-blur-xl text-center"
                 style={{ background: "rgba(15,20,40,0.6)", border: `1px solid ${s.color}35` }}
               >
-                <p className="font-playfair text-3xl font-bold" style={{ color: s.color }}>{s.value}</p>
+                <p className="font-sora text-3xl font-bold" style={{ color: s.color }}>{s.value}</p>
                 <p className="text-white/60 text-xs mt-1">{s.label}</p>
               </motion.div>
             ))}
@@ -109,7 +109,7 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
           <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
             <span className="text-secondary font-semibold text-sm uppercase tracking-widest">Our Story</span>
-            <h2 className="font-playfair text-3xl md:text-4xl font-bold text-foreground mt-3">
+            <h2 className="font-sora text-3xl md:text-4xl font-bold text-foreground mt-3">
               Built on a Legacy of <span className="text-secondary">Excellence</span>
             </h2>
             <p className="text-muted-foreground mt-6 leading-relaxed">
@@ -152,7 +152,7 @@ export default function About() {
               transition={{ delay: 0.3, type: "spring" }}
               className="absolute -bottom-6 -left-6 bg-secondary text-secondary-foreground p-6 rounded-2xl shadow-2xl hidden sm:block"
             >
-              <p className="font-playfair text-3xl font-bold">500+</p>
+              <p className="font-sora text-3xl font-bold">500+</p>
               <p className="text-sm font-medium">Projects Delivered</p>
             </motion.div>
           </motion.div>
@@ -164,7 +164,7 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-6">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
             <span className="text-secondary font-semibold text-sm uppercase tracking-widest">Our Journey</span>
-            <h2 className="font-playfair text-3xl md:text-4xl font-bold text-foreground mt-3">
+            <h2 className="font-sora text-3xl md:text-4xl font-bold text-foreground mt-3">
               Growth <span className="text-secondary">Timeline</span>
             </h2>
           </motion.div>
@@ -182,7 +182,7 @@ export default function About() {
                   className={`relative md:grid md:grid-cols-2 gap-8 items-center ${i % 2 === 0 ? "" : "md:[direction:rtl]"}`}
                 >
                   <div className={`p-6 rounded-2xl bg-card border border-border/50 shadow-md hover:shadow-lg transition-all ${i % 2 !== 0 ? "md:[direction:ltr]" : ""}`}>
-                    <span className="text-secondary font-playfair text-2xl font-bold">{m.year}</span>
+                    <span className="text-secondary font-sora text-2xl font-bold">{m.year}</span>
                     <h3 className="font-semibold text-foreground text-lg mt-1">{m.title}</h3>
                     <p className="text-muted-foreground text-sm mt-1">{m.desc}</p>
                   </div>
@@ -217,7 +217,7 @@ export default function About() {
                 <div className={`p-3 rounded-xl w-fit mb-6 ${item.color === "secondary" ? "bg-secondary/10" : "bg-accent/10"}`}>
                   <Icon className={`w-8 h-8 ${item.color === "secondary" ? "text-secondary" : "text-accent"}`} />
                 </div>
-                <h3 className="font-playfair text-2xl font-bold text-foreground">{item.title}</h3>
+                <h3 className="font-sora text-2xl font-bold text-foreground">{item.title}</h3>
                 <p className="text-muted-foreground mt-4 leading-relaxed">{item.text}</p>
               </motion.div>
             );
@@ -230,7 +230,7 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-6">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
             <span className="text-secondary font-semibold text-sm uppercase tracking-widest">Leadership</span>
-            <h2 className="font-playfair text-3xl md:text-4xl font-bold text-foreground mt-3">
+            <h2 className="font-sora text-3xl md:text-4xl font-bold text-foreground mt-3">
               Meet Our <span className="text-secondary">Leader</span>
             </h2>
           </motion.div>
@@ -264,7 +264,7 @@ export default function About() {
                 transition={{ delay: 0.4 }}
                 className="absolute bottom-6 left-6 right-6 bg-white/10 backdrop-blur-md rounded-2xl px-5 py-4 border border-white/20"
               >
-                <p className="font-playfair text-xl font-bold text-white">Mohammad</p>
+                <p className="font-sora text-xl font-bold text-white">Mohammad</p>
                 <p className="text-secondary text-sm font-semibold mt-0.5">CEO & Founder — Distinct Mark</p>
               </motion.div>
             </motion.div>
@@ -280,7 +280,7 @@ export default function About() {
                 <span className="w-2 h-2 bg-secondary rounded-full animate-pulse" />
                 Founder & Chief Executive
               </span>
-              <h3 className="font-playfair text-3xl md:text-4xl font-bold text-foreground leading-tight">
+              <h3 className="font-sora text-3xl md:text-4xl font-bold text-foreground leading-tight">
                 Visionary Behind <span className="text-secondary">Distinct Mark</span>
               </h3>
               <p className="text-muted-foreground mt-6 leading-relaxed text-base">
@@ -309,7 +309,7 @@ export default function About() {
                     transition={{ delay: 0.2 + i * 0.08 }}
                     className="rounded-2xl p-4 border border-border/50 bg-card text-center hover:shadow-md transition-all"
                   >
-                    <p className="font-playfair text-2xl font-bold" style={{ color: s.color }}>{s.value}</p>
+                    <p className="font-sora text-2xl font-bold" style={{ color: s.color }}>{s.value}</p>
                     <p className="text-muted-foreground text-xs mt-1">{s.label}</p>
                   </motion.div>
                 ))}
@@ -324,7 +324,7 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-6">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
             <span className="text-secondary font-semibold text-sm uppercase tracking-widest">Our Values</span>
-            <h2 className="font-playfair text-3xl md:text-4xl font-bold text-foreground mt-3">
+            <h2 className="font-sora text-3xl md:text-4xl font-bold text-foreground mt-3">
               What Drives <span className="text-secondary">Us</span>
             </h2>
           </motion.div>

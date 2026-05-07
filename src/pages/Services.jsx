@@ -61,7 +61,7 @@ export default function Services() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight"
+                className="font-sora text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight"
               >
                 7 Specialized{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-amber-300">
@@ -132,7 +132,7 @@ export default function Services() {
                       </div>
                     </motion.div>
                     {/* Division number */}
-                    <div className="absolute bottom-4 right-4 font-playfair text-5xl font-bold text-white/15 leading-none">
+                    <div className="absolute bottom-4 right-4 font-sora text-5xl font-bold text-white/15 leading-none">
                       {String(i + 1).padStart(2, "0")}
                     </div>
                   </div>
@@ -146,7 +146,7 @@ export default function Services() {
                       />
                       <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Division {i + 1}</span>
                     </div>
-                    <h3 className="font-playfair text-2xl md:text-3xl font-bold text-foreground">{service.title}</h3>
+                    <h3 className="font-sora text-2xl md:text-3xl font-bold text-foreground">{service.title}</h3>
                     <p className="text-muted-foreground mt-3 leading-relaxed text-sm">{service.description}</p>
                     <div className="flex items-center gap-2 mt-5">
                       <button className="flex items-center gap-2 font-semibold text-sm" style={{ color: service.color }}>
@@ -200,7 +200,7 @@ export default function Services() {
           className="absolute w-96 h-96 rounded-full blur-3xl bg-secondary right-10 top-0 pointer-events-none" />
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <h2 className="font-playfair text-3xl md:text-4xl font-bold text-white">
+            <h2 className="font-sora text-3xl md:text-4xl font-bold text-white">
               Need a Custom <span className="text-secondary">Solution?</span>
             </h2>
             <p className="text-white/60 mt-4 max-w-xl mx-auto">

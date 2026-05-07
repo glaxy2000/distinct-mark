@@ -15,7 +15,7 @@ export default function ColorBoxes() {
             <span className="inline-block px-4 py-1.5 rounded-full bg-secondary/10 text-secondary text-xs font-bold uppercase tracking-widest mb-4">
               Our Work Scope
             </span>
-            <h2 className="font-playfair text-3xl md:text-5xl font-bold text-foreground">
+            <h2 className="font-sora text-3xl md:text-5xl font-bold text-foreground">
               7 Divisions. <span className="text-secondary">One Vision.</span>
             </h2>
             <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
@@ -42,7 +42,7 @@ export default function ColorBoxes() {
                 }}
               >
                 {/* Number */}
-                <div className="absolute top-4 right-4 font-playfair text-5xl font-bold text-white/10 leading-none select-none">
+                <div className="absolute top-4 right-4 font-sora text-5xl font-bold text-white/10 leading-none select-none">
                   {String(i + 1).padStart(2, "0")}
                 </div>
 
@@ -95,8 +95,8 @@ export default function ColorBoxes() {
             }}
           >
             <div>
-              <div className="font-playfair text-5xl font-bold text-white/10 mb-5 leading-none select-none">✦</div>
-              <h3 className="font-playfair text-2xl font-bold mb-3">
+              <div className="font-sora text-5xl font-bold text-white/10 mb-5 leading-none select-none">✦</div>
+              <h3 className="font-sora text-2xl font-bold mb-3">
                 One-Stop <span className="text-secondary">Solution</span>
               </h3>
               <p className="text-white/60 text-sm leading-relaxed">

@@ -13,7 +13,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-3 mb-6">
               <img src={logo} alt="Distinct Mark" className="h-12 w-auto rounded-lg" />
-              <span className="font-playfair text-xl font-bold">
+              <span className="font-sora text-xl font-bold">
                 Distinct<span className="text-secondary">Mark</span>
               </span>
             </div>

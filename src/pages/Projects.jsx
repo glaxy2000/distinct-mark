@@ -87,7 +87,7 @@ export default function Projects() {
                 <span className="w-2 h-2 bg-secondary rounded-full animate-pulse" />
                 Our Portfolio
               </motion.span>
-              <h1 className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+              <h1 className="font-sora text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
                 Featured{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-amber-300">
                   Projects
@@ -99,7 +99,7 @@ export default function Projects() {
               <div className="flex gap-8 mt-8">
                 {[{ v: "500+", l: "Projects" }, { v: "KSA", l: "Nationwide" }, { v: "15+", l: "Years" }].map(s => (
                   <motion.div key={s.l} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}>
-                    <p className="font-playfair text-2xl font-bold text-secondary">{s.v}</p>
+                    <p className="font-sora text-2xl font-bold text-secondary">{s.v}</p>
                     <p className="text-white/50 text-xs mt-0.5">{s.l}</p>
                   </motion.div>
                 ))}
@@ -123,7 +123,7 @@ export default function Projects() {
                   </div>
                   <span className="text-white/80 text-sm font-semibold">Featured Project</span>
                 </div>
-                <h3 className="font-playfair text-xl font-bold text-white">Employee Camp — 5,000 Capacity</h3>
+                <h3 className="font-sora text-xl font-bold text-white">Employee Camp — 5,000 Capacity</h3>
                 <p className="text-white/55 text-sm mt-2 leading-relaxed">Comprehensive residential camp with dining, clinic, mosque, supermarket, CCTV, and 24/7 support services.</p>
                 <div className="flex items-center gap-2 mt-4 text-secondary text-sm font-medium group-hover:gap-3 transition-all">
                   View Details <ArrowRight className="w-4 h-4" />
@@ -141,7 +141,7 @@ export default function Projects() {
             <span className="inline-block px-4 py-1.5 rounded-full bg-secondary/20 text-secondary text-xs font-bold uppercase tracking-widest mb-4">
               Signature Project
             </span>
-            <h2 className="font-playfair text-3xl md:text-4xl font-bold">
+            <h2 className="font-sora text-3xl md:text-4xl font-bold">
               Employee Camp <span className="text-secondary">Solutions</span>
             </h2>
             <p className="text-white/60 mt-4 max-w-2xl mx-auto">
@@ -188,7 +188,7 @@ export default function Projects() {
             className="mt-12 rounded-2xl p-8 border border-secondary/20 text-center"
             style={{ background: "rgba(232,131,42,0.08)" }}
           >
-            <h3 className="font-playfair text-2xl font-bold text-white mb-6">
+            <h3 className="font-sora text-2xl font-bold text-white mb-6">
               Our <span className="text-secondary">Objectives</span>
             </h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
@@ -214,7 +214,7 @@ export default function Projects() {
         <div className="max-w-7xl mx-auto px-6">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
             <span className="text-secondary font-semibold text-sm uppercase tracking-widest">All Projects</span>
-            <h2 className="font-playfair text-3xl md:text-4xl font-bold text-foreground mt-2">
+            <h2 className="font-sora text-3xl md:text-4xl font-bold text-foreground mt-2">
               Project <span className="text-secondary">Gallery</span>
             </h2>
           </motion.div>

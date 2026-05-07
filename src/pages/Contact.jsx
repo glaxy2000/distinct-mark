@@ -64,7 +64,7 @@ export default function Contact() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight"
+              className="font-sora text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight"
             >
               Contact{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-amber-300">
@@ -118,7 +118,7 @@ export default function Contact() {
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12">
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
             <span className="text-secondary font-semibold text-sm uppercase tracking-widest">Send a Message</span>
-            <h2 className="font-playfair text-3xl font-bold text-foreground mt-3 mb-8">
+            <h2 className="font-sora text-3xl font-bold text-foreground mt-3 mb-8">
               Request a <span className="text-secondary">Quote</span>
             </h2>
 
@@ -135,7 +135,7 @@ export default function Contact() {
                 >
                   <CheckCircle className="w-12 h-12 text-secondary" />
                 </motion.div>
-                <h3 className="font-playfair text-2xl font-bold text-foreground">Thank You!</h3>
+                <h3 className="font-sora text-2xl font-bold text-foreground">Thank You!</h3>
                 <p className="text-muted-foreground mt-2">We'll get back to you within 24 hours.</p>
                 <Button onClick={() => setSubmitted(false)} className="mt-6 bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-full">
                   Send Another Message

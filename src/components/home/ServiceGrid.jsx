@@ -27,7 +27,7 @@ export default function ServiceGrid() {
             <span className="text-secondary font-semibold text-sm uppercase tracking-widest">
               What We Do
             </span>
-            <h2 className="font-playfair text-3xl md:text-5xl font-bold text-foreground mt-3">
+            <h2 className="font-sora text-3xl md:text-5xl font-bold text-foreground mt-3">
               Our <span className="text-secondary">Divisions</span>
             </h2>
             <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">

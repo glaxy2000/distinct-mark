@@ -17,7 +17,7 @@ export default function CTASection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="font-playfair text-3xl md:text-5xl font-bold text-white">
+          <h2 className="font-sora text-3xl md:text-5xl font-bold text-white">
             Ready to Start Your{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-amber-300">
               Next Project?

@@ -23,7 +23,7 @@ export default function AboutPreview() {
             <div className="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent" />
           </div>
           <div className="absolute -bottom-6 -right-6 bg-secondary text-secondary-foreground p-6 rounded-2xl shadow-xl">
-            <p className="font-playfair text-3xl font-bold">15+</p>
+            <p className="font-sora text-3xl font-bold">15+</p>
             <p className="text-sm font-medium">Years of Excellence</p>
           </div>
         </motion.div>
@@ -36,7 +36,7 @@ export default function AboutPreview() {
           <span className="text-secondary font-semibold text-sm uppercase tracking-widest">
             About Us
           </span>
-          <h2 className="font-playfair text-3xl md:text-4xl font-bold text-foreground mt-3">
+          <h2 className="font-sora text-3xl md:text-4xl font-bold text-foreground mt-3">
             Delivering <span className="text-secondary">Distinction</span> in Every Project
           </h2>
           <p className="text-muted-foreground mt-6 leading-relaxed">

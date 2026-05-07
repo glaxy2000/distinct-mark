@@ -40,7 +40,7 @@ export default function Navbar() {
         <Link to="/" className="flex items-center gap-3">
           <img src={logo} alt="Distinct Mark" className="h-12 w-auto rounded-lg" />
           <div className="hidden sm:block">
-            <span className={`font-playfair text-xl font-bold ${scrolled ? "text-foreground" : "text-white"}`}>
+            <span className={`font-sora text-xl font-bold ${scrolled ? "text-foreground" : "text-white"}`}>
               Distinct<span className="text-secondary">Mark</span>
             </span>
           </div>
