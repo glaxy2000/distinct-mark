@@ -247,7 +247,7 @@ export default function About() {
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 <img
                   src="https://media.base44.com/images/public/69fc5488f82bfea7ed1807c9/44c5daef1_Mohmmad.jpg"
-                  alt="Mohammad — CEO & Founder"
+                  alt="Mohammed Ayidh Almutari — CEO & Founder"
                   className="w-full object-cover"
                   style={{ maxHeight: "520px", objectPosition: "top" }}
                 />
