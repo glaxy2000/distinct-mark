@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,8 +6,8 @@
 
 @layer base {
   :root {
-    --font-sora: 'Sora', sans-serif;
-    --font-inter: 'Sora', sans-serif;
+    --font-sora: 'Open Sans', sans-serif;
+    --font-inter: 'Open Sans', sans-serif;
     --font-playfair: 'Playfair Display', serif;
 
     --background: 0 0% 100%;

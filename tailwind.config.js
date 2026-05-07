@@ -6,7 +6,7 @@ module.exports = {
   	extend: {
       fontFamily: {
         sora: ['var(--font-sora)'],
-        inter: ['var(--font-sora)'],
+        inter: ['var(--font-inter)'],
         playfair: ['var(--font-playfair)'],
       },
   		borderRadius: {
