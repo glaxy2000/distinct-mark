@@ -8,6 +8,7 @@ import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 
 import Layout from './components/Layout';
 import Home from './pages/Home';
+import Letterhead from './pages/Letterhead';
 import About from './pages/About';
 import Services from './pages/Services';
 import Projects from './pages/Projects';
@@ -44,6 +45,7 @@ const AuthenticatedApp = () => {
         <Route path="/services" element={<Services />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/letterhead" element={<Letterhead />} />
       </Route>
       <Route path="*" element={<PageNotFound />} />
     </Routes>
