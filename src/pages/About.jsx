@@ -29,7 +29,7 @@ export default function About() {
           <motion.img
             src={heroImages.about}
             alt="About"
-            className="w-full h-full object-cover opacity-30"
+            className="w-full h-full object-cover opacity-25"
             initial={{ scale: 1.15 }}
             animate={{ scale: 1 }}
             transition={{ duration: 8, ease: "easeOut" }}

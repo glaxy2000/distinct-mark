@@ -25,7 +25,7 @@ export default function Services() {
           <motion.img
             src={heroImages.electrical}
             alt="Services"
-            className="w-full h-full object-cover opacity-30"
+            className="w-full h-full object-cover opacity-25"
             initial={{ scale: 1.15 }}
             animate={{ scale: 1 }}
             transition={{ duration: 8, ease: "easeOut" }}
