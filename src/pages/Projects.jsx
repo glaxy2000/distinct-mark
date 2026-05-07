@@ -54,13 +54,13 @@ export default function Projects() {
           <motion.img
             src={heroImages.construction}
             alt="Projects"
-            className="w-full h-full object-cover opacity-15"
+            className="w-full h-full object-cover opacity-35"
             initial={{ scale: 1.15 }}
             animate={{ scale: 1 }}
             transition={{ duration: 8, ease: "easeOut" }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/88 via-primary/72 to-primary/45" />
-          <div className="absolute inset-0 bg-gradient-to-t from-primary/65 via-primary/20 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-primary/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent" />
           {/* Grid overlay */}
           <div className="absolute inset-0 opacity-5"
             style={{
