@@ -119,7 +119,8 @@ export const heroImages = {
   transport: "https://media.base44.com/images/public/69fc5488f82bfea7ed1807c9/e6408a8a1_generated_a5adc5ac.png",
   equipment: "https://media.base44.com/images/public/69fc5488f82bfea7ed1807c9/c1cf3c225_generated_51916fdb.png",
   main: "https://media.base44.com/images/public/69fc5488f82bfea7ed1807c9/2ff4dd396_generated_ceb8505e.png",
-  about: "https://media.base44.com/images/public/69fc5488f82bfea7ed1807c9/f57bbeb48_generated_8ffbbd5e.png"
+  about: "https://media.base44.com/images/public/69fc5488f82bfea7ed1807c9/f57bbeb48_generated_8ffbbd5e.png",
+  contact: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80"
 };
 
 export const stats = [

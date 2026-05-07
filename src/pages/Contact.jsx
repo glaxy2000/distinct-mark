@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { heroImages } from "@/lib/serviceData";
+
 import { MapPin, Phone, Mail, Clock, Send, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -29,7 +30,7 @@ export default function Contact() {
       <section className="relative h-[65vh] min-h-[480px] flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <motion.img
-            src={heroImages.about}
+            src={heroImages.contact}
             alt="Contact"
             className="w-full h-full object-cover opacity-50"
             initial={{ scale: 1.15 }}
