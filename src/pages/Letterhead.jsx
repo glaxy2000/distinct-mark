@@ -144,82 +144,8 @@ export default function Letterhead() {
           </span>
         </div>
 
-        {/* Body */}
-        <div style={{ padding: "32px 48px 0", flex: 1 }}>
-          {/* Ref & Date */}
-          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "20px" }}>
-            <div>
-              <div style={{ fontSize: "10px", color: "#9ca3af", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "2px" }}>Reference No.</div>
-              <div style={{ width: "180px", borderBottom: "1.5px solid #d1d5db", paddingBottom: "4px" }} />
-            </div>
-            <div style={{ textAlign: "right" }}>
-              <div style={{ fontSize: "10px", color: "#9ca3af", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "2px" }}>Date</div>
-              <div style={{ width: "180px", borderBottom: "1.5px solid #d1d5db", paddingBottom: "4px" }} />
-            </div>
-          </div>
-
-          {/* Subject */}
-          <div style={{ marginBottom: "18px" }}>
-            <div style={{ fontSize: "10px", color: "#9ca3af", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "2px" }}>Subject</div>
-            <div style={{ borderBottom: "1.5px solid #d1d5db", paddingBottom: "4px" }} />
-          </div>
-
-          {/* To */}
-          <div style={{ marginBottom: "18px" }}>
-            <div style={{ fontSize: "10px", color: "#9ca3af", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "2px" }}>To</div>
-            <div style={{ borderBottom: "1.5px solid #d1d5db", paddingBottom: "4px" }} />
-          </div>
-
-          {/* Salutation */}
-          <div style={{ fontSize: "12.5px", color: "#374151", marginBottom: "16px", fontWeight: "500" }}>Dear Sir / Madam,</div>
-
-          {/* Body content area — solid ruled lines, no gaps */}
-          <div style={{ marginBottom: "24px" }}>
-            {[...Array(18)].map((_, i) => (
-              <div
-                key={i}
-                style={{
-                  height: "26px",
-                  borderBottom: "1px solid #e5e7eb",
-                  width: i === 17 ? "55%" : "100%",
-                }}
-              />
-            ))}
-          </div>
-
-          {/* Closing */}
-          <div style={{ fontSize: "12.5px", color: "#374151", marginBottom: "24px" }}>Yours sincerely,</div>
-
-          {/* Signature & Stamp — stamp positioned clearly above footer */}
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "0" }}>
-            {/* Signature */}
-            <div>
-              <div style={{ height: "50px" }} />
-              <div style={{ width: "200px", borderTop: "1.5px solid #374151" }} />
-              <div style={{ fontSize: "11px", color: "#374151", marginTop: "5px" }}>Authorized Signatory</div>
-              <div style={{ fontSize: "10px", color: "#9ca3af", marginTop: "2px" }}>Name & Designation</div>
-            </div>
-
-            {/* Company Stamp */}
-            <div style={{ textAlign: "center", marginBottom: "8px" }}>
-              <div style={{ fontSize: "10px", color: "#9ca3af", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "8px" }}>Company Stamp</div>
-              <div
-                style={{
-                  width: "110px",
-                  height: "110px",
-                  borderRadius: "50%",
-                  border: "2px dashed #d1d5db",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  margin: "0 auto",
-                }}
-              >
-                <span style={{ fontSize: "10px", color: "#d1d5db" }}>STAMP</span>
-              </div>
-            </div>
-          </div>
-        </div>
+        {/* Body — clean empty writing area */}
+        <div style={{ padding: "32px 48px 0", flex: 1 }} />
 
         {/* Footer — pinned to bottom */}
         <div style={{ marginTop: "auto", flexShrink: 0 }}>
