@@ -144,8 +144,34 @@ export default function Letterhead() {
           </span>
         </div>
 
-        {/* Body — clean empty writing area */}
-        <div style={{ padding: "32px 48px 0", flex: 1 }} />
+        {/* Body — clean empty writing area with watermark logo */}
+        <div style={{ padding: "32px 48px 0", flex: 1, position: "relative" }}>
+          {/* Watermark */}
+          <div style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            opacity: 0.04,
+            pointerEvents: "none",
+            zIndex: 0,
+          }}>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 44" style={{ height: "280px", width: "auto" }}>
+              <g transform="translate(0, 2)">
+                <polygon points="20,0 40,20 20,40 0,20" fill="none" stroke="#1a2340" strokeWidth="2" />
+                <polygon points="20,8 32,20 20,32 8,20" fill="#1a2340" opacity="0.5" />
+                <text x="20" y="25" textAnchor="middle" fontSize="14" fontWeight="800" fontFamily="'Open Sans', sans-serif" letterSpacing="-1">
+                  <tspan fill="#E8832A">D</tspan><tspan fill="#1a2340">M</tspan>
+                </text>
+              </g>
+              <line x1="50" y1="8" x2="50" y2="36" stroke="#1a2340" strokeWidth="1.2" strokeOpacity="0.4" />
+              <g transform="translate(58, 0)">
+                <text y="20" fontSize="12.5" fontWeight="800" fontFamily="'Open Sans', sans-serif" fill="#E8832A" letterSpacing="3">DISTINCT</text>
+                <text y="36" fontSize="12.5" fontWeight="700" fontFamily="'Open Sans', sans-serif" fill="#1a2340" letterSpacing="5.5">MARK</text>
+              </g>
+            </svg>
+          </div>
+        </div>
 
         {/* Footer — pinned to bottom */}
         <div style={{ marginTop: "auto", flexShrink: 0 }}>
