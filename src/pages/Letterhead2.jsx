@@ -125,11 +125,19 @@ export default function Letterhead2() {
             <div style={{ color: "#E8832A", fontWeight: "700", fontSize: "14px", letterSpacing: "1px", marginBottom: "5px" }}>
               شركة ديستينكت مارك
             </div>
-            <div style={{ color: "rgba(255,255,255,0.75)", fontSize: "10.5px", lineHeight: "1.85" }}>
-              <div> ٠٥٥ ٨١٥ ٧٧٧٧ رقم الجوال</div>
+            <div style={{ color: "rgba(255,255,255,0.75)", fontSize: "10.5px", lineHeight: "1.85", display: "flex", flexDirection: "column", alignItems: "flex-end", gap: "3px" }}>
+              <div style={{ display: "flex", gap: "8px", direction: "ltr" }}>
+                <span>٠٥٥ ٨١٥ ٧٧٧٧</span>
+                <span style={{ color: "rgba(255,255,255,0.6)" }}>|</span>
+                <span>رقم الجوال</span>
+              </div>
+              <div style={{ display: "flex", gap: "8px", direction: "ltr" }}>
+                <span>٧٠٠٤٧٦٥٣٢٢</span>
+                <span style={{ color: "rgba(255,255,255,0.6)" }}>|</span>
+                <span>السجل التجاري</span>
+              </div>
               <div>info@distinctmark.net : البريد الإلكتروني</div>
               <div>www.distinctmark.net : الموقع</div>
-              <div>٧٠٠٤٧٦٥٣٢٢ : السجل التجاري</div>
             </div>
           </div>
         </div>
