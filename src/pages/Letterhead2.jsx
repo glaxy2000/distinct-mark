@@ -122,9 +122,9 @@ export default function Letterhead2() {
         <div style={{ background: "#1a2340", padding: "22px 48px", display: "flex", alignItems: "center", justifyContent: "space-between", flexShrink: 0, direction: "ltr" }}>
           <LogoSVG />
           <div style={{ textAlign: "right" }}>
-            <div style={{ color: "#E8832A", fontWeight: "700", fontSize: "14px", letterSpacing: "1px", marginBottom: "5px" }}>
-              شركة ديستينكت مارك
-            </div>
+            <svg viewBox="0 0 200 30" style={{ height: "28px", width: "auto", marginBottom: "5px" }}>
+              <text x="195" y="22" textAnchor="end" fontSize="18" fontWeight="700" fontFamily="Arial, sans-serif" fill="#E8832A">شركة ديستينكت مارك</text>
+            </svg>
             <div style={{ color: "rgba(255,255,255,0.75)", fontSize: "10.5px", lineHeight: "1.85", display: "flex", flexDirection: "column", alignItems: "flex-end", gap: "3px" }}>
               <div style={{ display: "flex", gap: "8px", direction: "ltr" }}>
                 <span> ٧٧٧٧ ٨١٥ ٠٥٥</span>
