@@ -119,7 +119,7 @@ export default function Letterhead() {
         <div style={{
           position: "absolute",
           top: "50%",
-          left: "55%",
+          left: "60%",
           transform: "translate(-50%, -50%)",
           opacity: 0.05,
           pointerEvents: "none",
