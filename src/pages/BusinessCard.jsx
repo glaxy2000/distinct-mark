@@ -25,7 +25,7 @@ function roundRect(ctx, x, y, w, h, r) {
 }
 
 async function drawCard(canvas, fields) {
-  const { name, position, email, website, address } = fields;
+  const { name, position, mobile, email, website, address } = fields;
   const ctx = canvas.getContext("2d");
   canvas.width = CARD_W;
   canvas.height = CARD_H;
@@ -74,6 +74,7 @@ async function drawCard(canvas, fields) {
   ctx.fillText((position || "YOUR POSITION").toUpperCase(), PAD, 258);
 
   const contacts = [
+    mobile || "+966 55 000 0000",
     email || "email@distinctmark.net",
     website || "www.distinctmark.net",
     address || "Riyadh, Saudi Arabia",
@@ -110,7 +111,7 @@ async function drawCard(canvas, fields) {
   ctx.closePath(); ctx.fill();
   ctx.restore();
 
-  const logoSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 44" width="200" height="44">
+  const logoSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 44" width="240" height="53">
     <g transform="translate(0,2)">
       <polygon points="20,0 40,20 20,40 0,20" fill="none" stroke="#E8832A" stroke-width="2"/>
       <polygon points="20,8 32,20 20,32 8,20" fill="#E8832A" opacity="0.2"/>
@@ -128,7 +129,7 @@ async function drawCard(canvas, fields) {
   const logoUrl = URL.createObjectURL(logoBlob);
   await new Promise((resolve) => {
     const img = new Image();
-    img.onload = () => { ctx.drawImage(img, CARD_W - 52 - 200, 44, 200, 44); URL.revokeObjectURL(logoUrl); resolve(); };
+    img.onload = () => { ctx.drawImage(img, CARD_W - 52 - 240, 36, 240, 53); URL.revokeObjectURL(logoUrl); resolve(); };
     img.src = logoUrl;
   });
 
@@ -172,7 +173,7 @@ async function drawCard(canvas, fields) {
 
 // ── Email Signature HTML ──
 function buildSignatureHTML(fields) {
-  const { name, position, email, website, address } = fields;
+  const { name, position, mobile, email, website, address } = fields;
   const webDisplay = website || "www.distinctmark.net";
   const webHref = webDisplay.startsWith("http") ? webDisplay : "https://" + webDisplay;
 
@@ -218,6 +219,7 @@ function buildSignatureHTML(fields) {
       <div style="font-size:16px;font-weight:800;color:#1a2340;letter-spacing:0.5px;margin-bottom:2px;">${name || "Your Name"}</div>
       <div style="font-size:12px;font-weight:700;color:#E8832A;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;">${position || "Your Position"}</div>
       <table cellpadding="0" cellspacing="0" border="0">
+        ${mobile ? `<tr><td style="padding:2px 0;"><span style="color:#E8832A;font-size:11px;margin-right:6px;">&#9679;</span><a href="tel:${mobile}" style="color:#1a2340;text-decoration:none;font-size:12px;">${mobile}</a></td></tr>` : ""}
         ${email ? `<tr><td style="padding:2px 0;"><span style="color:#E8832A;font-size:11px;margin-right:6px;">&#9679;</span><a href="mailto:${email}" style="color:#1a2340;text-decoration:none;font-size:12px;">${email}</a></td></tr>` : ""}
         ${webDisplay ? `<tr><td style="padding:2px 0;"><span style="color:#E8832A;font-size:11px;margin-right:6px;">&#9679;</span><a href="${webHref}" style="color:#1a2340;text-decoration:none;font-size:12px;">${webDisplay}</a></td></tr>` : ""}
         ${address ? `<tr><td style="padding:2px 0;"><span style="color:#E8832A;font-size:11px;margin-right:6px;">&#9679;</span><span style="color:#555;font-size:12px;">${address}</span></td></tr>` : ""}
@@ -245,6 +247,7 @@ export default function BusinessCard() {
   const [fields, setFields] = useState({
     name: "Annus Khan",
     position: "Chief Technology Officer",
+    mobile: "+966 55 815 7777",
     email: "annus@distinctmark.net",
     website: "www.distinctmark.net",
     address: "King Fahd District, Riyadh, KSA",
@@ -317,6 +320,10 @@ export default function BusinessCard() {
           <div>
             <Label className="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-1 block">Position / Title</Label>
             <Input value={fields.position} onChange={(e) => updateField("position", e.target.value)} placeholder="e.g. Chief Technology Officer" />
+          </div>
+          <div>
+            <Label className="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-1 block">Mobile Number</Label>
+            <Input value={fields.mobile} onChange={(e) => updateField("mobile", e.target.value)} placeholder="e.g. +966 55 000 0000" />
           </div>
           <div>
             <Label className="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-1 block">Email</Label>
