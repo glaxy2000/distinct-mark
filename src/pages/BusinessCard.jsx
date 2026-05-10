@@ -7,16 +7,30 @@ import { QRCodeCanvas } from "qrcode.react";
 const CARD_W = 1050;
 const CARD_H = 600;
 const DARK_W = CARD_W * 0.54;
+const PAD = 52;
 
-async function drawCard(canvas) {
+function roundRect(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r);
+  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h);
+  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r);
+  ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+}
+
+async function drawCard(canvas, qrDataUrl) {
   const ctx = canvas.getContext("2d");
   canvas.width = CARD_W;
   canvas.height = CARD_H;
 
-  // ── Load font ──
-  await document.fonts.load("800 44px 'Open Sans'");
+  await document.fonts.load("800 46px 'Open Sans'");
   await document.fonts.load("700 14px 'Open Sans'");
-  await document.fonts.load("400 13px 'Open Sans'");
+  await document.fonts.load("400 14px 'Open Sans'");
 
   // ── LEFT DARK PANEL ──
   ctx.fillStyle = "#1a2340";
@@ -47,42 +61,37 @@ async function drawCard(canvas) {
   ctx.fillStyle = "#E8832A";
   ctx.fillRect(0, 0, DARK_W, 6);
 
-  const PAD = 52;
-
   // Name
   ctx.fillStyle = "#FFFFFF";
   ctx.font = "800 46px 'Open Sans'";
-  ctx.letterSpacing = "2px";
-  ctx.fillText("ANNUS KHAN", PAD, 200);
+  ctx.fillText("ANNUS KHAN", PAD, 205);
 
   // Orange divider line
   ctx.fillStyle = "#E8832A";
-  ctx.fillRect(PAD, 222, 52, 3);
+  ctx.fillRect(PAD, 224, 52, 3);
 
   // Title
   ctx.fillStyle = "#E8832A";
   ctx.font = "700 14px 'Open Sans'";
-  ctx.fillText("CHIEF TECHNOLOGY OFFICER", PAD, 258);
+  ctx.fillText("CHIEF TECHNOLOGY OFFICER", PAD, 262);
 
   // Contact rows
   const contacts = [
-    { label: "+966 546 577 640" },
-    { label: "annus@distinctmark.net" },
-    { label: "www.distinctmark.net" },
-    { label: "King Fahd District, Riyadh, KSA" },
+    "+966 546 577 640",
+    "annus@distinctmark.net",
+    "www.distinctmark.net",
+    "King Fahd District, Riyadh, KSA",
   ];
-
   ctx.font = "400 14px 'Open Sans'";
   ctx.fillStyle = "rgba(255,255,255,0.82)";
-  contacts.forEach((c, i) => {
-    ctx.fillText(c.label, PAD + 6, 310 + i * 34);
+  contacts.forEach((label, i) => {
+    ctx.fillText(label, PAD + 14, 316 + i * 36);
   });
-
-  // Small orange dots before each contact
+  // Orange dots
   contacts.forEach((_, i) => {
     ctx.fillStyle = "#E8832A";
     ctx.beginPath();
-    ctx.arc(PAD - 8, 305 + i * 34, 3.5, 0, Math.PI * 2);
+    ctx.arc(PAD, 311 + i * 36, 3.5, 0, Math.PI * 2);
     ctx.fill();
   });
 
@@ -97,19 +106,21 @@ async function drawCard(canvas) {
   // Watermark diamond
   ctx.save();
   ctx.globalAlpha = 0.04;
-  const cx = CARD_W - 80, cy = CARD_H / 2, r = 160;
+  const dmx = CARD_W - 80, dmy = CARD_H / 2, dmr = 160;
   ctx.strokeStyle = "#1a2340";
   ctx.lineWidth = 8;
   ctx.beginPath();
-  ctx.moveTo(cx, cy - r); ctx.lineTo(cx + r, cy); ctx.lineTo(cx, cy + r); ctx.lineTo(cx - r, cy);
+  ctx.moveTo(dmx, dmy - dmr); ctx.lineTo(dmx + dmr, dmy);
+  ctx.lineTo(dmx, dmy + dmr); ctx.lineTo(dmx - dmr, dmy);
   ctx.closePath(); ctx.stroke();
   ctx.fillStyle = "#1a2340";
   ctx.beginPath();
-  ctx.moveTo(cx, cy - r * 0.6); ctx.lineTo(cx + r * 0.6, cy); ctx.lineTo(cx, cy + r * 0.6); ctx.lineTo(cx - r * 0.6, cy);
+  ctx.moveTo(dmx, dmy - dmr * 0.6); ctx.lineTo(dmx + dmr * 0.6, dmy);
+  ctx.lineTo(dmx, dmy + dmr * 0.6); ctx.lineTo(dmx - dmr * 0.6, dmy);
   ctx.closePath(); ctx.fill();
   ctx.restore();
 
-  // Logo SVG drawn as image
+  // Logo SVG as image
   const logoSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 44" width="200" height="44">
     <g transform="translate(0,2)">
       <polygon points="20,0 40,20 20,40 0,20" fill="none" stroke="#E8832A" stroke-width="2"/>
@@ -129,7 +140,7 @@ async function drawCard(canvas) {
   await new Promise((resolve) => {
     const img = new Image();
     img.onload = () => {
-      ctx.drawImage(img, CARD_W - 52 - 200, 44, 200, 44);
+      ctx.drawImage(img, CARD_W - PAD - 200, 44, 200, 44);
       URL.revokeObjectURL(logoUrl);
       resolve();
     };
@@ -137,87 +148,72 @@ async function drawCard(canvas) {
   });
 
   // Company name + tagline
-  const rPad = CARD_W - PAD;
   ctx.textAlign = "right";
   ctx.fillStyle = "#1a2340";
   ctx.font = "600 13px 'Open Sans'";
-  ctx.fillText("DISTINCT MARK CO.", rPad, CARD_H / 2 + 8);
+  ctx.fillText("DISTINCT MARK CO.", CARD_W - PAD, CARD_H / 2 + 8);
   ctx.fillStyle = "#E8832A";
   ctx.font = "600 11px 'Open Sans'";
-  ctx.fillText("BUILDING EXCELLENCE", rPad, CARD_H / 2 + 28);
+  ctx.fillText("BUILDING EXCELLENCE", CARD_W - PAD, CARD_H / 2 + 28);
   ctx.textAlign = "left";
 
-  // QR code
-  const qrDataUrl = await QRCode.toDataURL("https://www.distinctmark.net", {
-    width: 110,
-    margin: 1,
-    color: { dark: "#1a2340", light: "#ffffff" },
-  });
-
-  await new Promise((resolve) => {
-    const qrImg = new Image();
-    qrImg.onload = () => {
-      // White card behind QR
-      const qx = CARD_W - PAD - 110 - 10;
-      const qy = CARD_H - 50 - 110 - 10;
-      ctx.fillStyle = "white";
-      roundRect(ctx, qx - 8, qy - 8, 126, 126, 8);
-      ctx.fill();
-      ctx.strokeStyle = "#e5e7eb";
-      ctx.lineWidth = 1.5;
-      roundRect(ctx, qx - 8, qy - 8, 126, 126, 8);
-      ctx.stroke();
-      ctx.drawImage(qrImg, qx, qy, 110, 110);
-      resolve();
-    };
-    qrImg.src = qrDataUrl;
-  });
+  // QR code from pre-rendered data URL
+  if (qrDataUrl) {
+    await new Promise((resolve) => {
+      const qrImg = new Image();
+      qrImg.onload = () => {
+        const qx = CARD_W - PAD - 110 - 10;
+        const qy = CARD_H - 56 - 110;
+        ctx.fillStyle = "white";
+        roundRect(ctx, qx - 8, qy - 8, 126, 126, 8);
+        ctx.fill();
+        ctx.strokeStyle = "#e5e7eb";
+        ctx.lineWidth = 1.5;
+        roundRect(ctx, qx - 8, qy - 8, 126, 126, 8);
+        ctx.stroke();
+        ctx.drawImage(qrImg, qx, qy, 110, 110);
+        resolve();
+      };
+      qrImg.src = qrDataUrl;
+    });
+  }
 
   // Scan to visit label
   ctx.textAlign = "right";
   ctx.fillStyle = "#1a2340";
   ctx.font = "700 11px 'Open Sans'";
-  ctx.fillText("SCAN TO VISIT", CARD_W - PAD - 110 - 18 - 4, CARD_H - 74);
+  ctx.fillText("SCAN TO VISIT", CARD_W - PAD - 128, CARD_H - 76);
   ctx.fillStyle = "#888888";
   ctx.font = "400 10px 'Open Sans'";
-  ctx.fillText("www.distinctmark.net", CARD_W - PAD - 110 - 18 - 4, CARD_H - 58);
+  ctx.fillText("www.distinctmark.net", CARD_W - PAD - 128, CARD_H - 60);
   ctx.textAlign = "left";
-}
-
-function roundRect(ctx, x, y, w, h, r) {
-  ctx.beginPath();
-  ctx.moveTo(x + r, y);
-  ctx.lineTo(x + w - r, y);
-  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
-  ctx.lineTo(x + w, y + h - r);
-  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
-  ctx.lineTo(x + r, y + h);
-  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
-  ctx.lineTo(x, y + r);
-  ctx.quadraticCurveTo(x, y, x + r, y);
-  ctx.closePath();
 }
 
 export default function BusinessCard() {
   const previewRef = useRef(null);
-  const downloadRef = useRef(null);
+  const qrCanvasRef = useRef(null);
   const [ready, setReady] = useState(false);
   const [downloading, setDownloading] = useState(null);
 
-  useEffect(() => {
-    const canvas = previewRef.current;
-    drawCard(canvas).then(() => setReady(true));
-  }, []);
-
-  const getDownloadCanvas = async () => {
-    const canvas = document.createElement("canvas");
-    await drawCard(canvas);
-    return canvas;
+  const getQRDataUrl = () => {
+    const qrCanvas = qrCanvasRef.current;
+    return qrCanvas ? qrCanvas.toDataURL() : null;
   };
+
+  useEffect(() => {
+    // Wait a tick for QRCodeCanvas to render, then draw the card
+    const timer = setTimeout(() => {
+      const qrDataUrl = getQRDataUrl();
+      drawCard(previewRef.current, qrDataUrl).then(() => setReady(true));
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   const downloadJPG = async () => {
     setDownloading("jpg");
-    const canvas = await getDownloadCanvas();
+    const canvas = document.createElement("canvas");
+    const qrDataUrl = getQRDataUrl();
+    await drawCard(canvas, qrDataUrl);
     const link = document.createElement("a");
     link.href = canvas.toDataURL("image/jpeg", 0.97);
     link.download = "AnnusKhan_BusinessCard.jpg";
@@ -229,7 +225,9 @@ export default function BusinessCard() {
 
   const downloadPDF = async () => {
     setDownloading("pdf");
-    const canvas = await getDownloadCanvas();
+    const canvas = document.createElement("canvas");
+    const qrDataUrl = getQRDataUrl();
+    await drawCard(canvas, qrDataUrl);
     const imgData = canvas.toDataURL("image/jpeg", 0.97);
     const pdf = new jsPDF({ orientation: "landscape", unit: "mm", format: [88.9, 50.8] });
     pdf.addImage(imgData, "JPEG", 0, 0, 88.9, 50.8);
@@ -241,6 +239,18 @@ export default function BusinessCard() {
 
   return (
     <div className="min-h-screen bg-gray-200 py-10 px-4">
+      {/* Hidden QR canvas for data extraction */}
+      <div style={{ position: "absolute", left: -9999, top: -9999 }}>
+        <QRCodeCanvas
+          ref={qrCanvasRef}
+          value="https://www.distinctmark.net"
+          size={110}
+          fgColor="#1a2340"
+          bgColor="#ffffff"
+          level="M"
+        />
+      </div>
+
       <div className="max-w-5xl mx-auto mb-6">
         <h1 className="text-xl font-bold text-gray-700 mb-1">Business Card — Annus Khan</h1>
         <p className="text-sm text-gray-500 mb-5">3.5" × 2" standard business card</p>
