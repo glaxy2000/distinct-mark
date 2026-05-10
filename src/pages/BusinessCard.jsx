@@ -171,49 +171,80 @@ async function drawCard(canvas, fields) {
   ctx.textAlign = "left";
 }
 
+// ── Convert SVG string to PNG data URL ──
+async function svgToPngDataUrl(svgString, width, height) {
+  return new Promise((resolve) => {
+    const blob = new Blob([svgString], { type: "image/svg+xml" });
+    const url = URL.createObjectURL(blob);
+    const img = new Image();
+    img.onload = () => {
+      const canvas = document.createElement("canvas");
+      canvas.width = width * 2;
+      canvas.height = height * 2;
+      const ctx = canvas.getContext("2d");
+      ctx.drawImage(img, 0, 0, width * 2, height * 2);
+      URL.revokeObjectURL(url);
+      resolve(canvas.toDataURL("image/png"));
+    };
+    img.src = url;
+  });
+}
+
 // ── Email Signature HTML ──
-function buildSignatureHTML(fields) {
+async function buildSignatureHTML(fields) {
   const { name, position, mobile, email, website, address } = fields;
   const webDisplay = website || "www.distinctmark.net";
   const webHref = webDisplay.startsWith("http") ? webDisplay : "https://" + webDisplay;
 
-  const linkedinSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" style="display:inline-block;vertical-align:middle;">
+  // Convert logo SVG → PNG data URL (works in email clients)
+  const logoSVGStr = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 44" width="320" height="88">
+    <rect width="200" height="44" fill="white"/>
+    <g transform="translate(0,2)">
+      <polygon points="20,0 40,20 20,40 0,20" fill="none" stroke="#E8832A" stroke-width="2"/>
+      <polygon points="20,8 32,20 20,32 8,20" fill="#E8832A" opacity="0.2"/>
+      <text x="20" y="25" text-anchor="middle" font-size="14" font-weight="800" font-family="Arial,sans-serif" letter-spacing="-1" fill="#E8832A">D</text>
+      <text x="26" y="25" text-anchor="middle" font-size="14" font-weight="800" font-family="Arial,sans-serif" fill="#1a2340">M</text>
+    </g>
+    <line x1="50" y1="8" x2="50" y2="36" stroke="#E8832A" stroke-width="1.2" stroke-opacity="0.5"/>
+    <g transform="translate(58,0)">
+      <text y="20" font-size="12.5" font-weight="800" font-family="Arial,sans-serif" fill="#E8832A" letter-spacing="3">DISTINCT</text>
+      <text y="36" font-size="12.5" font-weight="700" font-family="Arial,sans-serif" fill="#1a2340" letter-spacing="5.5">MARK</text>
+    </g>
+  </svg>`;
+
+  const linkedinSVGStr = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48">
     <rect width="24" height="24" rx="4" fill="#0077B5"/>
     <path d="M6.5 10h-2v8h2v-8zm-1-3.1a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4zM18 14.2c0-2.4-1.1-4.2-3.3-4.2-1 0-1.9.5-2.4 1.3V10H10v8h2.3v-4.2c0-1.1.5-2 1.6-2 1 0 1.8.7 1.8 2.1V18H18v-3.8z" fill="#fff"/>
   </svg>`;
 
-  const twitterSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" style="display:inline-block;vertical-align:middle;">
+  const twitterSVGStr = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48">
     <rect width="24" height="24" rx="4" fill="#000000"/>
     <path d="M17.5 4h2.1l-4.6 5.3L20.5 20h-4.2l-3.3-4.4L9.2 20H7.1l4.9-5.6L6.5 4h4.3l3 3.9L17.5 4zm-.8 14.4h1.2L8.3 5.2H7l9.7 13.2z" fill="#fff"/>
   </svg>`;
 
-  const facebookSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" style="display:inline-block;vertical-align:middle;">
+  const facebookSVGStr = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48">
     <rect width="24" height="24" rx="4" fill="#1877F2"/>
     <path d="M16 8h-2c-.6 0-1 .4-1 1v2h3l-.5 3H13v7h-3v-7H8v-3h2V9c0-2.2 1.8-4 4-4h2v3z" fill="#fff"/>
   </svg>`;
 
-  return `<table cellpadding="0" cellspacing="0" border="0" style="font-family:'Open Sans',Arial,sans-serif;font-size:13px;color:#1a2340;border-collapse:collapse;max-width:540px;">
+  const [logoPng, liPng, twPng, fbPng] = await Promise.all([
+    svgToPngDataUrl(logoSVGStr, 160, 36),
+    svgToPngDataUrl(linkedinSVGStr, 24, 24),
+    svgToPngDataUrl(twitterSVGStr, 24, 24),
+    svgToPngDataUrl(facebookSVGStr, 24, 24),
+  ]);
+
+  return `<table cellpadding="0" cellspacing="0" border="0" style="font-family:Arial,sans-serif;font-size:13px;color:#1a2340;border-collapse:collapse;max-width:540px;">
   <tr>
     <td style="padding-right:18px;border-right:3px solid #E8832A;vertical-align:top;padding-top:4px;">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 44" width="160" height="36">
-        <g transform="translate(0,2)">
-          <polygon points="20,0 40,20 20,40 0,20" fill="none" stroke="#E8832A" stroke-width="2"/>
-          <polygon points="20,8 32,20 20,32 8,20" fill="#E8832A" opacity="0.2"/>
-          <text x="20" y="25" text-anchor="middle" font-size="14" font-weight="800" font-family="Open Sans,Arial,sans-serif" letter-spacing="-1">
-            <tspan fill="#E8832A">D</tspan><tspan fill="#1a2340">M</tspan>
-          </text>
-        </g>
-        <line x1="50" y1="8" x2="50" y2="36" stroke="#E8832A" stroke-width="1.2" stroke-opacity="0.5"/>
-        <g transform="translate(58,0)">
-          <text y="20" font-size="12.5" font-weight="800" font-family="Open Sans,Arial,sans-serif" fill="#E8832A" letter-spacing="3">DISTINCT</text>
-          <text y="36" font-size="12.5" font-weight="700" font-family="Open Sans,Arial,sans-serif" fill="#1a2340" letter-spacing="5.5">MARK</text>
-        </g>
-      </svg>
-      <div style="margin-top:10px;display:flex;gap:6px;align-items:center;">
-        <a href="https://www.linkedin.com/company/distinctmark" target="_blank" style="text-decoration:none;">${linkedinSVG}</a>
-        <a href="https://twitter.com/distinctmark" target="_blank" style="text-decoration:none;">${twitterSVG}</a>
-        <a href="https://www.facebook.com/distinctmark" target="_blank" style="text-decoration:none;">${facebookSVG}</a>
-      </div>
+      <img src="${logoPng}" width="160" height="36" alt="Distinct Mark" style="display:block;border:0;"/>
+      <table cellpadding="0" cellspacing="0" border="0" style="margin-top:10px;">
+        <tr>
+          <td style="padding-right:6px;"><a href="https://www.linkedin.com/company/distinctmark" target="_blank" style="text-decoration:none;"><img src="${liPng}" width="24" height="24" alt="LinkedIn" style="display:block;border:0;"/></a></td>
+          <td style="padding-right:6px;"><a href="https://twitter.com/distinctmark" target="_blank" style="text-decoration:none;"><img src="${twPng}" width="24" height="24" alt="X" style="display:block;border:0;"/></a></td>
+          <td><a href="https://www.facebook.com/distinctmark" target="_blank" style="text-decoration:none;"><img src="${fbPng}" width="24" height="24" alt="Facebook" style="display:block;border:0;"/></a></td>
+        </tr>
+      </table>
     </td>
     <td style="padding-left:18px;vertical-align:top;">
       <div style="font-size:16px;font-weight:800;color:#1a2340;letter-spacing:0.5px;margin-bottom:2px;">${name || "Your Name"}</div>
@@ -243,6 +274,7 @@ export default function BusinessCard() {
   const [ready, setReady] = useState(false);
   const [downloading, setDownloading] = useState(null);
   const [copied, setCopied] = useState(false);
+  const [sigHtml, setSigHtml] = useState("");
 
   const [fields, setFields] = useState({
     name: "Annus Khan",
@@ -258,6 +290,7 @@ export default function BusinessCard() {
   useEffect(() => {
     setReady(false);
     drawCard(previewRef.current, fields).then(() => setReady(true));
+    buildSignatureHTML(fields).then(setSigHtml);
   }, [fields]);
 
   const getDownloadCanvas = async () => {
@@ -287,13 +320,12 @@ export default function BusinessCard() {
   };
 
   const copySignature = async () => {
-    const html = buildSignatureHTML(fields);
+    const html = await buildSignatureHTML(fields);
     try {
       await navigator.clipboard.write([
         new ClipboardItem({ "text/html": new Blob([html], { type: "text/html" }) }),
       ]);
     } catch {
-      // Fallback: copy plain text
       const plain = `${fields.name}\n${fields.position}\n${fields.email}\n${fields.website}\n${fields.address}\nDistinct Mark Co.`;
       await navigator.clipboard.writeText(plain);
     }
@@ -390,7 +422,7 @@ export default function BusinessCard() {
             <div className="bg-white rounded-xl shadow border border-gray-200 p-6">
               <div
                 ref={sigRef}
-                dangerouslySetInnerHTML={{ __html: buildSignatureHTML(fields) }}
+                dangerouslySetInnerHTML={{ __html: sigHtml }}
               />
             </div>
             <p className="text-xs text-gray-400 mt-2">Paste directly into Gmail, Outlook, or Apple Mail.</p>
