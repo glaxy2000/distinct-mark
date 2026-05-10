@@ -271,7 +271,7 @@ export default function BusinessCard() {
     setTimeout(() => setCopied(false), 2500);
   };
 
-  const SCALE = 0.58;
+  const SCALE = 0.46;
 
   return (
     <div className="min-h-screen bg-gray-100 py-10 px-4">
@@ -354,19 +354,6 @@ export default function BusinessCard() {
             </div>
 
             <div className="bg-white rounded-xl shadow border border-gray-200 p-6">
-              {/* Fake email chrome */}
-              <div className="border-b border-gray-100 pb-3 mb-4">
-                <div className="text-xs text-gray-400 mb-1"><span className="font-semibold text-gray-500">From:</span> {fields.email || "you@distinctmark.net"}</div>
-                <div className="text-xs text-gray-400 mb-1"><span className="font-semibold text-gray-500">To:</span> recipient@example.com</div>
-                <div className="text-xs text-gray-400"><span className="font-semibold text-gray-500">Subject:</span> Re: Project Update</div>
-              </div>
-              <div className="text-sm text-gray-600 mb-5 leading-relaxed">
-                Thank you for your message. Please find the details below.<br />
-                Looking forward to hearing from you soon.
-              </div>
-              <div className="text-sm text-gray-500 mb-4">Best regards,</div>
-
-              {/* Live signature preview */}
               <div
                 ref={sigRef}
                 dangerouslySetInnerHTML={{ __html: buildSignatureHTML(fields) }}
