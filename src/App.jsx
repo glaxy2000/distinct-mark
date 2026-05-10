@@ -14,6 +14,7 @@ import Letterhead2 from './pages/Letterhead2';
 import BusinessCard from './pages/BusinessCard';
 import LinkedInCover from './pages/LinkedInCover';
 import LinkedInCoverCompany from './pages/LinkedInCoverCompany';
+import FacebookProfilePic from './pages/FacebookProfilePic';
 import About from './pages/About';
 import Services from './pages/Services';
 import Projects from './pages/Projects';
@@ -55,6 +56,7 @@ const AuthenticatedApp = () => {
         <Route path="/business-card" element={<BusinessCard />} />
         <Route path="/linkedin-cover" element={<LinkedInCover />} />
         <Route path="/linkedin-cover-company" element={<LinkedInCoverCompany />} />
+        <Route path="/facebook-profile-pic" element={<FacebookProfilePic />} />
       </Route>
       <Route path="*" element={<PageNotFound />} />
     </Routes>
