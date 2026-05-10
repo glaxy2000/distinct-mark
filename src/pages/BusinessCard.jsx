@@ -304,7 +304,7 @@ export default function BusinessCard() {
   const SCALE = 0.46;
 
   return (
-    <div className="min-h-screen bg-gray-100 py-10 px-4">
+    <div className="min-h-screen bg-gray-100 pt-28 pb-10 px-4">
       <div className="max-w-6xl mx-auto">
 
         {/* Heading */}
