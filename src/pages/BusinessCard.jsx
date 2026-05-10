@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-import { FileImage, FileText } from "lucide-react";
+import { FileImage, FileText, Copy, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -34,11 +34,10 @@ async function drawCard(canvas, fields) {
   await document.fonts.load("700 14px 'Open Sans'");
   await document.fonts.load("400 14px 'Open Sans'");
 
-  // ── LEFT DARK PANEL ──
+  // LEFT DARK PANEL
   ctx.fillStyle = "#1a2340";
   ctx.fillRect(0, 0, DARK_W, CARD_H);
 
-  // Subtle grid
   ctx.save();
   ctx.globalAlpha = 0.04;
   ctx.strokeStyle = "rgba(255,255,255,0.8)";
@@ -47,7 +46,6 @@ async function drawCard(canvas, fields) {
   for (let y = 0; y < CARD_H; y += 40) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(DARK_W, y); ctx.stroke(); }
   ctx.restore();
 
-  // Wave divider
   ctx.save();
   ctx.fillStyle = "#111c35";
   ctx.beginPath();
@@ -59,27 +57,22 @@ async function drawCard(canvas, fields) {
   ctx.fill();
   ctx.restore();
 
-  // Orange top bar
   ctx.fillStyle = "#E8832A";
   ctx.fillRect(0, 0, DARK_W, 6);
 
   const PAD = 52;
 
-  // Name
   ctx.fillStyle = "#FFFFFF";
   ctx.font = "800 46px 'Open Sans'";
   ctx.fillText((name || "YOUR NAME").toUpperCase(), PAD, 200);
 
-  // Orange divider line
   ctx.fillStyle = "#E8832A";
   ctx.fillRect(PAD, 222, 52, 3);
 
-  // Position
   ctx.fillStyle = "#E8832A";
   ctx.font = "700 14px 'Open Sans'";
   ctx.fillText((position || "YOUR POSITION").toUpperCase(), PAD, 258);
 
-  // Contact rows
   const contacts = [
     email || "email@distinctmark.net",
     website || "www.distinctmark.net",
@@ -88,11 +81,7 @@ async function drawCard(canvas, fields) {
 
   ctx.font = "400 14px 'Open Sans'";
   ctx.fillStyle = "rgba(255,255,255,0.82)";
-  contacts.forEach((c, i) => {
-    ctx.fillText(c, PAD + 6, 310 + i * 38);
-  });
-
-  // Small orange dots before each contact
+  contacts.forEach((c, i) => { ctx.fillText(c, PAD + 6, 310 + i * 38); });
   contacts.forEach((_, i) => {
     ctx.fillStyle = "#E8832A";
     ctx.beginPath();
@@ -100,15 +89,13 @@ async function drawCard(canvas, fields) {
     ctx.fill();
   });
 
-  // ── RIGHT LIGHT PANEL ──
+  // RIGHT LIGHT PANEL
   ctx.fillStyle = "#f5f6fa";
   ctx.fillRect(DARK_W, 0, CARD_W - DARK_W, CARD_H);
 
-  // Orange bottom bar
   ctx.fillStyle = "#E8832A";
   ctx.fillRect(DARK_W, CARD_H - 6, CARD_W - DARK_W, 6);
 
-  // Watermark diamond
   ctx.save();
   ctx.globalAlpha = 0.04;
   const cx = CARD_W - 80, cy = CARD_H / 2, r = 160;
@@ -123,7 +110,6 @@ async function drawCard(canvas, fields) {
   ctx.closePath(); ctx.fill();
   ctx.restore();
 
-  // Logo SVG
   const logoSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 44" width="200" height="44">
     <g transform="translate(0,2)">
       <polygon points="20,0 40,20 20,40 0,20" fill="none" stroke="#E8832A" stroke-width="2"/>
@@ -142,15 +128,10 @@ async function drawCard(canvas, fields) {
   const logoUrl = URL.createObjectURL(logoBlob);
   await new Promise((resolve) => {
     const img = new Image();
-    img.onload = () => {
-      ctx.drawImage(img, CARD_W - 52 - 200, 44, 200, 44);
-      URL.revokeObjectURL(logoUrl);
-      resolve();
-    };
+    img.onload = () => { ctx.drawImage(img, CARD_W - 52 - 200, 44, 200, 44); URL.revokeObjectURL(logoUrl); resolve(); };
     img.src = logoUrl;
   });
 
-  // Company name + tagline
   const rPad = CARD_W - PAD;
   ctx.textAlign = "right";
   ctx.fillStyle = "#1a2340";
@@ -161,13 +142,8 @@ async function drawCard(canvas, fields) {
   ctx.fillText("BUILDING EXCELLENCE", rPad, CARD_H / 2 + 28);
   ctx.textAlign = "left";
 
-  // QR code
   const qrUrl = website ? (website.startsWith("http") ? website : "https://" + website) : "https://www.distinctmark.net";
-  const qrDataUrl = await QRCode.toDataURL(qrUrl, {
-    width: 110,
-    margin: 1,
-    color: { dark: "#1a2340", light: "#ffffff" },
-  });
+  const qrDataUrl = await QRCode.toDataURL(qrUrl, { width: 110, margin: 1, color: { dark: "#1a2340", light: "#ffffff" } });
 
   await new Promise((resolve) => {
     const qrImg = new Image();
@@ -175,19 +151,15 @@ async function drawCard(canvas, fields) {
       const qx = CARD_W - PAD - 110 - 10;
       const qy = CARD_H - 50 - 110 - 10;
       ctx.fillStyle = "white";
-      roundRect(ctx, qx - 8, qy - 8, 126, 126, 8);
-      ctx.fill();
-      ctx.strokeStyle = "#e5e7eb";
-      ctx.lineWidth = 1.5;
-      roundRect(ctx, qx - 8, qy - 8, 126, 126, 8);
-      ctx.stroke();
+      roundRect(ctx, qx - 8, qy - 8, 126, 126, 8); ctx.fill();
+      ctx.strokeStyle = "#e5e7eb"; ctx.lineWidth = 1.5;
+      roundRect(ctx, qx - 8, qy - 8, 126, 126, 8); ctx.stroke();
       ctx.drawImage(qrImg, qx, qy, 110, 110);
       resolve();
     };
     qrImg.src = qrDataUrl;
   });
 
-  // Scan label
   ctx.textAlign = "right";
   ctx.fillStyle = "#1a2340";
   ctx.font = "700 11px 'Open Sans'";
@@ -198,14 +170,54 @@ async function drawCard(canvas, fields) {
   ctx.textAlign = "left";
 }
 
+// ── Email Signature HTML ──
+function buildSignatureHTML(fields) {
+  const { name, position, email, website, address } = fields;
+  const webDisplay = website || "www.distinctmark.net";
+  const webHref = webDisplay.startsWith("http") ? webDisplay : "https://" + webDisplay;
+
+  return `<table cellpadding="0" cellspacing="0" border="0" style="font-family:'Open Sans',Arial,sans-serif;font-size:13px;color:#1a2340;border-collapse:collapse;max-width:520px;">
+  <tr>
+    <td style="padding-right:18px;border-right:3px solid #E8832A;vertical-align:top;padding-top:4px;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 44" width="130" height="29">
+        <g transform="translate(0,2)">
+          <polygon points="20,0 40,20 20,40 0,20" fill="none" stroke="#E8832A" stroke-width="2"/>
+          <polygon points="20,8 32,20 20,32 8,20" fill="#E8832A" opacity="0.2"/>
+          <text x="20" y="25" text-anchor="middle" font-size="14" font-weight="800" font-family="Open Sans,Arial,sans-serif" letter-spacing="-1">
+            <tspan fill="#E8832A">D</tspan><tspan fill="#1a2340">M</tspan>
+          </text>
+        </g>
+        <line x1="50" y1="8" x2="50" y2="36" stroke="#E8832A" stroke-width="1.2" stroke-opacity="0.5"/>
+        <g transform="translate(58,0)">
+          <text y="20" font-size="12.5" font-weight="800" font-family="Open Sans,Arial,sans-serif" fill="#E8832A" letter-spacing="3">DISTINCT</text>
+          <text y="36" font-size="12.5" font-weight="700" font-family="Open Sans,Arial,sans-serif" fill="#1a2340" letter-spacing="5.5">MARK</text>
+        </g>
+      </svg>
+    </td>
+    <td style="padding-left:18px;vertical-align:top;">
+      <div style="font-size:16px;font-weight:800;color:#1a2340;letter-spacing:0.5px;margin-bottom:2px;">${name || "Your Name"}</div>
+      <div style="font-size:12px;font-weight:700;color:#E8832A;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;">${position || "Your Position"}</div>
+      <table cellpadding="0" cellspacing="0" border="0">
+        ${email ? `<tr><td style="padding:2px 0;"><span style="color:#E8832A;font-size:11px;margin-right:6px;">&#9679;</span><a href="mailto:${email}" style="color:#1a2340;text-decoration:none;font-size:12px;">${email}</a></td></tr>` : ""}
+        ${webDisplay ? `<tr><td style="padding:2px 0;"><span style="color:#E8832A;font-size:11px;margin-right:6px;">&#9679;</span><a href="${webHref}" style="color:#1a2340;text-decoration:none;font-size:12px;">${webDisplay}</a></td></tr>` : ""}
+        ${address ? `<tr><td style="padding:2px 0;"><span style="color:#E8832A;font-size:11px;margin-right:6px;">&#9679;</span><span style="color:#555;font-size:12px;">${address}</span></td></tr>` : ""}
+      </table>
+      <div style="margin-top:10px;border-top:1px solid #e5e7eb;padding-top:8px;font-size:10px;color:#aaa;letter-spacing:1.5px;">DISTINCT MARK CO. &nbsp;·&nbsp; BUILDING EXCELLENCE</div>
+    </td>
+  </tr>
+</table>`;
+}
+
 export default function BusinessCard() {
   const previewRef = useRef(null);
+  const sigRef = useRef(null);
   const [ready, setReady] = useState(false);
   const [downloading, setDownloading] = useState(null);
+  const [copied, setCopied] = useState(false);
 
   const [fields, setFields] = useState({
-    name: "ANNUS KHAN",
-    position: "CHIEF TECHNOLOGY OFFICER",
+    name: "Annus Khan",
+    position: "Chief Technology Officer",
     email: "annus@distinctmark.net",
     website: "www.distinctmark.net",
     address: "King Fahd District, Riyadh, KSA",
@@ -213,7 +225,6 @@ export default function BusinessCard() {
 
   const updateField = (key, value) => setFields((f) => ({ ...f, [key]: value }));
 
-  // Redraw whenever fields change
   useEffect(() => {
     setReady(false);
     drawCard(previewRef.current, fields).then(() => setReady(true));
@@ -231,9 +242,7 @@ export default function BusinessCard() {
     const link = document.createElement("a");
     link.href = canvas.toDataURL("image/jpeg", 0.97);
     link.download = `${fields.name || "BusinessCard"}_Card.jpg`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    document.body.appendChild(link); link.click(); document.body.removeChild(link);
     setDownloading(null);
   };
 
@@ -247,83 +256,125 @@ export default function BusinessCard() {
     setDownloading(null);
   };
 
-  const SCALE = 0.62;
+  const copySignature = async () => {
+    const html = buildSignatureHTML(fields);
+    try {
+      await navigator.clipboard.write([
+        new ClipboardItem({ "text/html": new Blob([html], { type: "text/html" }) }),
+      ]);
+    } catch {
+      // Fallback: copy plain text
+      const plain = `${fields.name}\n${fields.position}\n${fields.email}\n${fields.website}\n${fields.address}\nDistinct Mark Co.`;
+      await navigator.clipboard.writeText(plain);
+    }
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2500);
+  };
+
+  const SCALE = 0.58;
 
   return (
     <div className="min-h-screen bg-gray-100 py-10 px-4">
-      <div className="max-w-5xl mx-auto">
-        <h1 className="text-xl font-bold text-gray-700 mb-1">Business Card Generator</h1>
-        <p className="text-sm text-gray-500 mb-6">Fill in the details below and the card updates live.</p>
+      <div className="max-w-6xl mx-auto">
+
+        {/* Heading */}
+        <h1 className="text-2xl font-bold text-gray-800 mb-1">Business Card & Email Signature Generator</h1>
+        <p className="text-sm text-gray-500 mb-7">Fill in your details — both previews update live.</p>
 
         {/* Form */}
         <div className="bg-white rounded-2xl shadow p-6 mb-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <Label className="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-1 block">Full Name</Label>
-            <Input
-              value={fields.name}
-              onChange={(e) => updateField("name", e.target.value)}
-              placeholder="e.g. Annus Khan"
-            />
+            <Input value={fields.name} onChange={(e) => updateField("name", e.target.value)} placeholder="e.g. Annus Khan" />
           </div>
           <div>
             <Label className="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-1 block">Position / Title</Label>
-            <Input
-              value={fields.position}
-              onChange={(e) => updateField("position", e.target.value)}
-              placeholder="e.g. Chief Technology Officer"
-            />
+            <Input value={fields.position} onChange={(e) => updateField("position", e.target.value)} placeholder="e.g. Chief Technology Officer" />
           </div>
           <div>
             <Label className="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-1 block">Email</Label>
-            <Input
-              value={fields.email}
-              onChange={(e) => updateField("email", e.target.value)}
-              placeholder="e.g. name@distinctmark.net"
-            />
+            <Input value={fields.email} onChange={(e) => updateField("email", e.target.value)} placeholder="e.g. name@distinctmark.net" />
           </div>
           <div>
             <Label className="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-1 block">Website</Label>
-            <Input
-              value={fields.website}
-              onChange={(e) => updateField("website", e.target.value)}
-              placeholder="e.g. www.distinctmark.net"
-            />
+            <Input value={fields.website} onChange={(e) => updateField("website", e.target.value)} placeholder="e.g. www.distinctmark.net" />
           </div>
           <div className="sm:col-span-2">
             <Label className="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-1 block">Address</Label>
-            <Input
-              value={fields.address}
-              onChange={(e) => updateField("address", e.target.value)}
-              placeholder="e.g. King Fahd District, Riyadh, KSA"
-            />
+            <Input value={fields.address} onChange={(e) => updateField("address", e.target.value)} placeholder="e.g. King Fahd District, Riyadh, KSA" />
           </div>
         </div>
 
-        {/* Download buttons */}
-        <div className="flex gap-3 mb-6">
-          <Button onClick={downloadJPG} disabled={!!downloading || !ready} className="bg-blue-600 hover:bg-blue-700 text-white gap-2">
-            <FileImage className="w-4 h-4" />
-            {downloading === "jpg" ? "Downloading..." : "Download JPG"}
-          </Button>
-          <Button onClick={downloadPDF} disabled={!!downloading || !ready} className="bg-[#E8832A] hover:bg-[#d0721f] text-white gap-2">
-            <FileText className="w-4 h-4" />
-            {downloading === "pdf" ? "Downloading..." : "Download PDF"}
-          </Button>
-        </div>
+        {/* Two-column previews */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
-        {/* Preview */}
-        <p className="text-xs text-gray-400 mb-3 uppercase tracking-widest">Live Preview</p>
-        <div style={{
-          width: `${CARD_W * SCALE}px`,
-          height: `${CARD_H * SCALE}px`,
-          borderRadius: "12px",
-          overflow: "hidden",
-          boxShadow: "0 12px 48px rgba(0,0,0,0.22)",
-        }}>
-          <canvas
-            ref={previewRef}
-            style={{ width: `${CARD_W * SCALE}px`, height: `${CARD_H * SCALE}px`, display: "block" }}
-          />
+          {/* ── LEFT: Business Card ── */}
+          <div>
+            <div className="flex items-center justify-between mb-3">
+              <p className="text-xs text-gray-400 uppercase tracking-widest font-semibold">Business Card Preview</p>
+              <div className="flex gap-2">
+                <Button size="sm" onClick={downloadJPG} disabled={!!downloading || !ready} className="bg-blue-600 hover:bg-blue-700 text-white gap-1 text-xs h-8">
+                  <FileImage className="w-3 h-3" />
+                  {downloading === "jpg" ? "..." : "JPG"}
+                </Button>
+                <Button size="sm" onClick={downloadPDF} disabled={!!downloading || !ready} className="bg-[#E8832A] hover:bg-[#d0721f] text-white gap-1 text-xs h-8">
+                  <FileText className="w-3 h-3" />
+                  {downloading === "pdf" ? "..." : "PDF"}
+                </Button>
+              </div>
+            </div>
+            <div style={{
+              width: `${CARD_W * SCALE}px`,
+              height: `${CARD_H * SCALE}px`,
+              borderRadius: "12px",
+              overflow: "hidden",
+              boxShadow: "0 8px 32px rgba(0,0,0,0.18)",
+              maxWidth: "100%",
+            }}>
+              <canvas
+                ref={previewRef}
+                style={{ width: `${CARD_W * SCALE}px`, height: `${CARD_H * SCALE}px`, display: "block" }}
+              />
+            </div>
+            <p className="text-xs text-gray-400 mt-2">3.5" × 2" standard business card</p>
+          </div>
+
+          {/* ── RIGHT: Email Signature ── */}
+          <div>
+            <div className="flex items-center justify-between mb-3">
+              <p className="text-xs text-gray-400 uppercase tracking-widest font-semibold">Email Signature Preview</p>
+              <Button
+                size="sm"
+                onClick={copySignature}
+                className={`gap-1 text-xs h-8 ${copied ? "bg-green-600 hover:bg-green-700" : "bg-[#1a2340] hover:bg-[#111c35]"} text-white`}
+              >
+                {copied ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
+                {copied ? "Copied!" : "Copy Signature"}
+              </Button>
+            </div>
+
+            <div className="bg-white rounded-xl shadow border border-gray-200 p-6">
+              {/* Fake email chrome */}
+              <div className="border-b border-gray-100 pb-3 mb-4">
+                <div className="text-xs text-gray-400 mb-1"><span className="font-semibold text-gray-500">From:</span> {fields.email || "you@distinctmark.net"}</div>
+                <div className="text-xs text-gray-400 mb-1"><span className="font-semibold text-gray-500">To:</span> recipient@example.com</div>
+                <div className="text-xs text-gray-400"><span className="font-semibold text-gray-500">Subject:</span> Re: Project Update</div>
+              </div>
+              <div className="text-sm text-gray-600 mb-5 leading-relaxed">
+                Thank you for your message. Please find the details below.<br />
+                Looking forward to hearing from you soon.
+              </div>
+              <div className="text-sm text-gray-500 mb-4">Best regards,</div>
+
+              {/* Live signature preview */}
+              <div
+                ref={sigRef}
+                dangerouslySetInnerHTML={{ __html: buildSignatureHTML(fields) }}
+              />
+            </div>
+            <p className="text-xs text-gray-400 mt-2">Paste directly into Gmail, Outlook, or Apple Mail.</p>
+          </div>
+
         </div>
       </div>
     </div>
