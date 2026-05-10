@@ -83,7 +83,7 @@ function CardFront() {
     >
       {/* ── LEFT DARK PANEL ── */}
       <div style={{
-        width: "46%",
+        width: "54%",
         background: "#1a2340",
         position: "relative",
         display: "flex",
@@ -107,14 +107,15 @@ function CardFront() {
         {/* Name */}
         <div style={{
           color: "#FFFFFF",
-          fontSize: "40px",
+          fontSize: "44px",
           fontWeight: "800",
           textTransform: "uppercase",
-          letterSpacing: "1.5px",
+          letterSpacing: "2px",
           lineHeight: 1.05,
+          whiteSpace: "nowrap",
           position: "relative", zIndex: 1,
         }}>
-          ANNUS<br />KHAN
+          ANNUS KHAN
         </div>
 
         {/* Orange line */}
@@ -123,7 +124,7 @@ function CardFront() {
         {/* Title */}
         <div style={{
           color: "#E8832A",
-          fontSize: "11.5px",
+          fontSize: "13px",
           fontWeight: "700",
           letterSpacing: "3px",
           textTransform: "uppercase",
@@ -143,7 +144,7 @@ function CardFront() {
           ].map(({ icon, value }) => (
             <div key={value} style={{ display: "flex", alignItems: "center", gap: "12px" }}>
               <span style={{ fontSize: "12px", opacity: 0.7, width: "18px", textAlign: "center" }}>{icon}</span>
-              <span style={{ color: "rgba(255,255,255,0.75)", fontSize: "11px", letterSpacing: "0.2px" }}>{value}</span>
+              <span style={{ color: "rgba(255,255,255,0.80)", fontSize: "13px", letterSpacing: "0.2px" }}>{value}</span>
             </div>
           ))}
         </div>
