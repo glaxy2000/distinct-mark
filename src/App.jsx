@@ -10,6 +10,7 @@ import Layout from './components/Layout';
 import Home from './pages/Home';
 import Letterhead from './pages/Letterhead';
 import Letterhead2 from './pages/Letterhead2';
+import BusinessCard from './pages/BusinessCard';
 import About from './pages/About';
 import Services from './pages/Services';
 import Projects from './pages/Projects';
@@ -48,6 +49,7 @@ const AuthenticatedApp = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/letterhead" element={<Letterhead />} />
         <Route path="/letterhead2" element={<Letterhead2 />} />
+        <Route path="/business-card" element={<BusinessCard />} />
       </Route>
       <Route path="*" element={<PageNotFound />} />
     </Routes>
