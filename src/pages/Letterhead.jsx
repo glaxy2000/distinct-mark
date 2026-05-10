@@ -166,7 +166,7 @@ export default function Letterhead() {
         <div style={{ background: "#f7f8fa", padding: "8px 48px", display: "flex", alignItems: "center", gap: "8px", borderBottom: "1px solid #e5e7eb", flexShrink: 0 }}>
           <span style={{ color: "#E8832A", fontSize: "11px", fontWeight: "bold" }}>&#9679;</span>
           <span style={{ color: "#6b7280", fontSize: "11px" }}>
-            RURD7110, 2475, Ar Rimal, Riyadh 13266, Kingdom of Saudi Arabia
+            King Fahd District, Riyadh, Saudi Arabia
           </span>
         </div>
 
@@ -178,7 +178,7 @@ export default function Letterhead() {
           <div style={{ height: "3px", background: "#E8832A" }} />
           <div style={{ background: "#1a2340", padding: "12px 48px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
             <div style={{ color: "rgba(255,255,255,0.5)", fontSize: "9.5px" }}>
-              © 2025 Distinct Mark. All Rights Reserved.
+              © 2026 Distinct Mark. All Rights Reserved.
             </div>
             <div style={{ display: "flex", gap: "14px" }}>
               {["Construction", "E&M", "IT Services", "Catering", "Trading", "Transport", "Equipment"].map((s) => (

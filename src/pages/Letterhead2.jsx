@@ -157,7 +157,7 @@ export default function Letterhead2() {
         <div style={{ background: "#f7f8fa", padding: "8px 48px", display: "flex", alignItems: "center", justifyContent: "flex-start", gap: "8px", borderBottom: "1px solid #e5e7eb", flexShrink: 0 }}>
           <span style={{ color: "#E8832A", fontSize: "11px", fontWeight: "bold" }}>&#9679;</span>
           <span style={{ color: "#6b7280", fontSize: "11px" }}>
-            RURD7110، ٢٤٧٥، الرمال، الرياض ١٣٢٦٦، المملكة العربية السعودية
+            حي الملك فهد، الرياض، المملكة العربية السعودية
           </span>
         </div>
 
@@ -174,7 +174,7 @@ export default function Letterhead2() {
               ))}
             </div>
             <div style={{ color: "rgba(255,255,255,0.5)", fontSize: "9.5px" }}>
-              © ٢٠٢٥ ديستينكت مارك. جميع الحقوق محفوظة.
+              © ٢٠٢٦ ديستينكت مارك. جميع الحقوق محفوظة.
             </div>
           </div>
         </div>

@@ -14,7 +14,7 @@ export const services = [
       "Labour Camp Construction & Maintenance",
       "Building Construction & Renovation",
       "Civil Works",
-      "Interior Fit-Out Works"
+      "Project Management"
     ]
   },
   {
@@ -45,7 +45,8 @@ export const services = [
       "IT Support & Network Installation",
       "CCTV & Security Systems",
       "Software & Hardware Supply",
-      "System Integration Services"
+      "System Integration",
+      "Technical Consultation"
     ]
   },
   {
@@ -60,7 +61,7 @@ export const services = [
       "Industrial Catering Services",
       "Camp Catering Services",
       "Restaurant Operation & Management",
-      "Food Supply Services"
+      "Food Supply & Procurement"
     ]
   },
   {
@@ -90,7 +91,7 @@ export const services = [
       "Transportation Services",
       "Staff Transportation",
       "Equipment Transportation",
-      "Logistics Support Services"
+      "Logistics Management"
     ]
   },
   {
@@ -105,7 +106,7 @@ export const services = [
       "Heavy Equipment Rental",
       "Construction Equipment Rental",
       "Generator Rental",
-      "Machinery Rental"
+      "Specialized Machinery Rental"
     ]
   }
 ];
@@ -124,8 +125,8 @@ export const heroImages = {
 };
 
 export const stats = [
-  { value: "15+", label: "Years of Excellence" },
-  { value: "500+", label: "Projects Completed" },
+  { value: "7+", label: "Years of Excellence" },
+  { value: "50+", label: "Projects Completed" },
   { value: "7", label: "Business Divisions" },
-  { value: "2000+", label: "Team Members" }
+  { value: "60+", label: "Team Members" }
 ];

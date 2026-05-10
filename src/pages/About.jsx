@@ -13,11 +13,11 @@ const values = [
 ];
 
 const milestones = [
-  { year: "2009", title: "Founded", desc: "Established in Riyadh, Saudi Arabia" },
-  { year: "2013", title: "Expansion", desc: "Launched E&M and IT divisions" },
-  { year: "2017", title: "Scale-Up", desc: "Grew to 1,000+ team members" },
-  { year: "2020", title: "Camp Projects", desc: "Delivered first 5,000-person employee camp" },
-  { year: "2024", title: "Today", desc: "7 Divisions, 500+ projects, KSA-wide operations" },
+  { year: "2019", title: "Founded", desc: "Established in Riyadh, Saudi Arabia" },
+  { year: "2020", title: "Expansion", desc: "Launched E&M and IT divisions" },
+  { year: "2022", title: "Scale-Up", desc: "Grew to 60+ team members" },
+  { year: "2023", title: "Camp Projects", desc: "Delivered first 15,000-person camp" },
+  { year: "2026", title: "Today", desc: "7 Divisions, 50+ projects, KSA-wide operations" },
 ];
 
 export default function About() {
@@ -83,10 +83,10 @@ export default function About() {
             className="hidden lg:grid grid-cols-2 gap-4"
           >
             {[
-              { value: "15+", label: "Years of Excellence", color: "#E8832A" },
-              { value: "500+", label: "Projects Completed", color: "#3B5998" },
+              { value: "7+", label: "Years of Excellence", color: "#E8832A" },
+              { value: "50+", label: "Projects Completed", color: "#3B5998" },
               { value: "7", label: "Business Divisions", color: "#0EA5E9" },
-              { value: "2,000+", label: "Team Members", color: "#16A34A" },
+              { value: "60+", label: "Team Members", color: "#16A34A" },
             ].map((s, i) => (
               <motion.div
                 key={s.label}
@@ -152,7 +152,7 @@ export default function About() {
               transition={{ delay: 0.3, type: "spring" }}
               className="absolute -bottom-6 -left-6 bg-secondary text-secondary-foreground p-6 rounded-2xl shadow-2xl hidden sm:block"
             >
-              <p className="font-sora text-3xl font-bold">500+</p>
+              <p className="font-sora text-3xl font-bold">50+</p>
               <p className="text-sm font-medium">Projects Delivered</p>
             </motion.div>
           </motion.div>
@@ -287,19 +287,16 @@ export default function About() {
                 Mohammad is the founder and driving force behind Distinct Mark — a multi-disciplinary services group headquartered in Riyadh, Saudi Arabia. With a bold entrepreneurial spirit and deep understanding of the Kingdom's industrial landscape, he built Distinct Mark from the ground up into a diversified enterprise spanning seven key divisions.
               </p>
               <p className="text-muted-foreground mt-4 leading-relaxed text-base">
-                Under his leadership, Distinct Mark has delivered over 500 projects across construction, electrical & mechanical, IT, catering, trading, transportation, and equipment rental — serving oil & gas, infrastructure, and corporate clients nationwide. His vision is rooted in quality, safety, and sustainable growth aligned with Saudi Arabia's Vision 2030.
-              </p>
-              <p className="text-muted-foreground mt-4 leading-relaxed text-base">
-                Mohammad leads with integrity, empowering a team of 2,000+ professionals to uphold the group's commitment to excellence on every project, every day.
+                Under his leadership, Distinct Mark has delivered over 50+ projects across construction, electrical & mechanical, IT, catering, trading, transportation, and equipment rental.
               </p>
 
               {/* Key highlights */}
               <div className="grid grid-cols-2 gap-4 mt-8">
                 {[
-                  { value: "15+", label: "Years of Vision", color: "#E8832A" },
-                  { value: "500+", label: "Projects Delivered", color: "#3B5998" },
+                  { value: "7+", label: "Years of Vision", color: "#E8832A" },
+                  { value: "50+", label: "Projects Delivered", color: "#3B5998" },
                   { value: "7", label: "Divisions Built", color: "#0EA5E9" },
-                  { value: "2,000+", label: "Team Led", color: "#16A34A" },
+                  { value: "60+", label: "Team Led", color: "#16A34A" },
                 ].map((s, i) => (
                   <motion.div
                     key={s.label}
