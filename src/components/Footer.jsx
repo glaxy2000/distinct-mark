@@ -31,6 +31,7 @@ export default function Footer() {
                 <Link
                   key={link.path}
                   to={link.path}
+                  onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                   className="flex items-center gap-2 text-primary-foreground/60 hover:text-secondary transition-colors text-sm"
                 >
                   <ArrowRight className="w-3 h-3" />
