@@ -186,10 +186,15 @@ function buildSignatureHTML(fields) {
     <path d="M17.5 4h2.1l-4.6 5.3L20.5 20h-4.2l-3.3-4.4L9.2 20H7.1l4.9-5.6L6.5 4h4.3l3 3.9L17.5 4zm-.8 14.4h1.2L8.3 5.2H7l9.7 13.2z" fill="#fff"/>
   </svg>`;
 
+  const facebookSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" style="display:inline-block;vertical-align:middle;">
+    <rect width="24" height="24" rx="4" fill="#1877F2"/>
+    <path d="M16 8h-2c-.6 0-1 .4-1 1v2h3l-.5 3H13v7h-3v-7H8v-3h2V9c0-2.2 1.8-4 4-4h2v3z" fill="#fff"/>
+  </svg>`;
+
   return `<table cellpadding="0" cellspacing="0" border="0" style="font-family:'Open Sans',Arial,sans-serif;font-size:13px;color:#1a2340;border-collapse:collapse;max-width:540px;">
   <tr>
     <td style="padding-right:18px;border-right:3px solid #E8832A;vertical-align:top;padding-top:4px;">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 44" width="130" height="29">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 44" width="160" height="36">
         <g transform="translate(0,2)">
           <polygon points="20,0 40,20 20,40 0,20" fill="none" stroke="#E8832A" stroke-width="2"/>
           <polygon points="20,8 32,20 20,32 8,20" fill="#E8832A" opacity="0.2"/>
@@ -203,9 +208,10 @@ function buildSignatureHTML(fields) {
           <text y="36" font-size="12.5" font-weight="700" font-family="Open Sans,Arial,sans-serif" fill="#1a2340" letter-spacing="5.5">MARK</text>
         </g>
       </svg>
-      <div style="margin-top:10px;display:flex;gap:6px;">
+      <div style="margin-top:10px;display:flex;gap:6px;align-items:center;">
         <a href="https://www.linkedin.com/company/distinctmark" target="_blank" style="text-decoration:none;">${linkedinSVG}</a>
-        <a href="https://twitter.com/distinctmark" target="_blank" style="text-decoration:none;margin-left:6px;">${twitterSVG}</a>
+        <a href="https://twitter.com/distinctmark" target="_blank" style="text-decoration:none;">${twitterSVG}</a>
+        <a href="https://www.facebook.com/distinctmark" target="_blank" style="text-decoration:none;">${facebookSVG}</a>
       </div>
     </td>
     <td style="padding-left:18px;vertical-align:top;">
