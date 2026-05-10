@@ -176,7 +176,17 @@ function buildSignatureHTML(fields) {
   const webDisplay = website || "www.distinctmark.net";
   const webHref = webDisplay.startsWith("http") ? webDisplay : "https://" + webDisplay;
 
-  return `<table cellpadding="0" cellspacing="0" border="0" style="font-family:'Open Sans',Arial,sans-serif;font-size:13px;color:#1a2340;border-collapse:collapse;max-width:520px;">
+  const linkedinSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" style="display:inline-block;vertical-align:middle;">
+    <rect width="24" height="24" rx="4" fill="#0077B5"/>
+    <path d="M6.5 10h-2v8h2v-8zm-1-3.1a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4zM18 14.2c0-2.4-1.1-4.2-3.3-4.2-1 0-1.9.5-2.4 1.3V10H10v8h2.3v-4.2c0-1.1.5-2 1.6-2 1 0 1.8.7 1.8 2.1V18H18v-3.8z" fill="#fff"/>
+  </svg>`;
+
+  const twitterSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" style="display:inline-block;vertical-align:middle;">
+    <rect width="24" height="24" rx="4" fill="#000000"/>
+    <path d="M17.5 4h2.1l-4.6 5.3L20.5 20h-4.2l-3.3-4.4L9.2 20H7.1l4.9-5.6L6.5 4h4.3l3 3.9L17.5 4zm-.8 14.4h1.2L8.3 5.2H7l9.7 13.2z" fill="#fff"/>
+  </svg>`;
+
+  return `<table cellpadding="0" cellspacing="0" border="0" style="font-family:'Open Sans',Arial,sans-serif;font-size:13px;color:#1a2340;border-collapse:collapse;max-width:540px;">
   <tr>
     <td style="padding-right:18px;border-right:3px solid #E8832A;vertical-align:top;padding-top:4px;">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 44" width="130" height="29">
@@ -193,6 +203,10 @@ function buildSignatureHTML(fields) {
           <text y="36" font-size="12.5" font-weight="700" font-family="Open Sans,Arial,sans-serif" fill="#1a2340" letter-spacing="5.5">MARK</text>
         </g>
       </svg>
+      <div style="margin-top:10px;display:flex;gap:6px;">
+        <a href="https://www.linkedin.com/company/distinctmark" target="_blank" style="text-decoration:none;">${linkedinSVG}</a>
+        <a href="https://twitter.com/distinctmark" target="_blank" style="text-decoration:none;margin-left:6px;">${twitterSVG}</a>
+      </div>
     </td>
     <td style="padding-left:18px;vertical-align:top;">
       <div style="font-size:16px;font-weight:800;color:#1a2340;letter-spacing:0.5px;margin-bottom:2px;">${name || "Your Name"}</div>
@@ -203,6 +217,13 @@ function buildSignatureHTML(fields) {
         ${address ? `<tr><td style="padding:2px 0;"><span style="color:#E8832A;font-size:11px;margin-right:6px;">&#9679;</span><span style="color:#555;font-size:12px;">${address}</span></td></tr>` : ""}
       </table>
       <div style="margin-top:10px;border-top:1px solid #e5e7eb;padding-top:8px;font-size:10px;color:#aaa;letter-spacing:1.5px;">DISTINCT MARK CO. &nbsp;·&nbsp; BUILDING EXCELLENCE</div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" style="padding-top:14px;">
+      <div style="border-top:1px solid #e5e7eb;padding-top:10px;font-size:9.5px;color:#999;line-height:1.6;font-style:italic;max-width:540px;">
+        <strong style="color:#bbb;font-style:normal;">Confidentiality Notice:</strong> The content of this message is confidential. If you have received it by mistake, please inform us by an email reply and then delete the message. It is forbidden to copy, forward, or in any way reveal the contents of this message to anyone. The integrity and security of this email cannot be guaranteed over the Internet. Therefore, the sender will not be held liable for any damage caused by the message.
+      </div>
     </td>
   </tr>
 </table>`;
