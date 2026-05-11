@@ -14,7 +14,7 @@ const imageMap = {
 };
 
 const projects = [
-  { title: "Employee Camp Complex — 1,000 Capacity", division: "construction", location: "Riyadh, Saudi Arabia", year: "2024", description: "Full planning, construction, MEP, and fit-out of a 1,000-person employee accommodation facility with dining, mosque, clinic, and recreation areas." },
+  { title: "Employee Camp Complex — 15,000 Capacity", division: "construction", location: "Riyadh, Saudi Arabia", year: "2024", description: "Full planning, construction, MEP, and fit-out of a 1,000-person employee accommodation facility with dining, mosque, clinic, and recreation areas." },
   { title: "Industrial HVAC Installation", division: "electrical", location: "Jeddah Industrial City", year: "2024", description: "Complete HVAC system design, supply, and installation for a 10,000 sqm industrial warehouse." },
   { title: "Camp Network & CCTV Upgrade", division: "it", location: "Riyadh, Saudi Arabia", year: "2023", description: "Full IT infrastructure for employee camp: high-speed Wi-Fi, CCTV surveillance, access control, and IT support." },
   { title: "Camp Catering — 1,000 Meals/Day", division: "catering", location: "ARAMCO Project Site, Dhahran", year: "2024", description: "Full-scale industrial catering with central kitchen, 24/7 dining hall operations, and HACCP-certified food preparation." },
