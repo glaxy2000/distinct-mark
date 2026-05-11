@@ -123,7 +123,7 @@ export default function Projects() {
                   </div>
                   <span className="text-white/80 text-sm font-semibold">Featured Project</span>
                 </div>
-                <h3 className="font-sora text-xl font-bold text-white">Employee Camp — 5,000 Capacity</h3>
+                <h3 className="font-sora text-xl font-bold text-white">Employee Camp — 1,000 Capacity</h3>
                 <p className="text-white/55 text-sm mt-2 leading-relaxed">Comprehensive residential camp with dining, clinic, mosque, supermarket, CCTV, and 24/7 support services.</p>
                 <div className="flex items-center gap-2 mt-4 text-secondary text-sm font-medium group-hover:gap-3 transition-all">
                   View Details <ArrowRight className="w-4 h-4" />
