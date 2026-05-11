@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react";
 import { FileImage, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import html2canvas from "html2canvas";
 import { jsPDF } from "jspdf";
 
@@ -32,6 +34,8 @@ function LogoSVG() {
 export default function Letterhead() {
   const letterRef = useRef(null);
   const [downloading, setDownloading] = useState(null);
+  const [mobile, setMobile] = useState("+966 55 815 7777");
+  const [address, setAddress] = useState("King Fahd District, Riyadh, Saudi Arabia");
 
   const captureCanvas = async () => {
     return await html2canvas(letterRef.current, {
@@ -80,6 +84,19 @@ export default function Letterhead() {
       {/* Controls */}
       <div className="max-w-[794px] mx-auto mb-6">
         <h1 className="text-xl font-bold text-gray-700 mb-4">Company Letterhead</h1>
+
+        {/* Form fields */}
+        <div className="bg-white rounded-xl shadow p-5 mb-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <Label className="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-1 block">Mobile Number</Label>
+            <Input value={mobile} onChange={(e) => setMobile(e.target.value)} placeholder="e.g. +966 55 000 0000" />
+          </div>
+          <div>
+            <Label className="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-1 block">Address</Label>
+            <Input value={address} onChange={(e) => setAddress(e.target.value)} placeholder="e.g. King Fahd District, Riyadh, KSA" />
+          </div>
+        </div>
+
         <div className="flex gap-3">
           <Button
             onClick={downloadJPG}
@@ -151,7 +168,7 @@ export default function Letterhead() {
               DISTINCT MARK
             </div>
             <div style={{ color: "rgba(255,255,255,0.75)", fontSize: "10.5px", lineHeight: "1.85" }}>
-              <div>Tel: +966 55 815 7777</div>
+              <div>Tel: {mobile}</div>
               <div>Email: info@distinctmark.net</div>
               <div>Web: www.distinctmark.net</div>
               <div>CR No. 7004765322</div>
@@ -166,7 +183,7 @@ export default function Letterhead() {
         <div style={{ background: "#f7f8fa", padding: "8px 48px", display: "flex", alignItems: "center", gap: "8px", borderBottom: "1px solid #e5e7eb", flexShrink: 0 }}>
           <span style={{ color: "#E8832A", fontSize: "11px", fontWeight: "bold" }}>&#9679;</span>
           <span style={{ color: "#6b7280", fontSize: "11px" }}>
-            King Fahd District, Riyadh, Saudi Arabia
+            {address}
           </span>
         </div>
 
