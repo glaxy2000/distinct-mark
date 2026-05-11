@@ -33,7 +33,7 @@ const campServices = [
   { icon: Building2, color: "#3B5998", title: "Residential Accommodation", items: ["Furnished employee rooms", "Shared & private options", "A/C & ventilation systems", "Housekeeping & laundry", "Recreation areas"] },
   { icon: Wifi, color: "#0EA5E9", title: "Internet & Communication", items: ["High-speed Wi-Fi coverage", "CCTV surveillance", "Access control systems", "Telephone & intercom", "IT support & maintenance"] },
   { icon: ShoppingCart, color: "#DC2626", title: "Supermarket & Retail", items: ["Groceries & food items", "Fresh produce & beverages", "Personal care products", "Pharmacy & barber shop", "ATM & banking services"] },
-  { icon: UtensilsCrossed, color: "#16A34A", title: "Catering & Dining", items: ["Central kitchen & dining halls", "3,000+ meals per day", "Hygienic meal preparation", "Multiple menu options", "24/7 food service"] },
+  { icon: UtensilsCrossed, color: "#16A34A", title: "Catering & Dining", items: ["Central kitchen & dining halls", "1,000+ meals per day", "Hygienic meal preparation", "Multiple menu options", "24/7 food service"] },
   { icon: Truck, color: "#1E3A5F", title: "Transportation Services", items: ["Employee transport buses", "Shuttle services", "Vehicle management", "GPS-tracked fleet", "24/7 availability"] },
   { icon: Shield, color: "#E8832A", title: "Health & Safety", items: ["Medical clinic on-site", "Emergency response support", "Fire protection systems", "Occupational health compliance", "First aid centers"] },
 ];
