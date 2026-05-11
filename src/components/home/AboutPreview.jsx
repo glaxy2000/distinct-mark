@@ -23,7 +23,7 @@ export default function AboutPreview() {
             <div className="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent" />
           </div>
           <div className="absolute -bottom-6 -right-6 bg-secondary text-secondary-foreground p-6 rounded-2xl shadow-xl">
-            <p className="font-sora text-3xl font-bold">15+</p>
+            <p className="font-sora text-3xl font-bold">7+</p>
             <p className="text-sm font-medium">Years of Excellence</p>
           </div>
         </motion.div>
