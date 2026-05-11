@@ -16,7 +16,7 @@ const milestones = [
   { year: "2019", title: "Founded", desc: "Established in Riyadh, Saudi Arabia" },
   { year: "2020", title: "Expansion", desc: "Launched E&M and IT divisions" },
   { year: "2022", title: "Scale-Up", desc: "Grew to 60+ team members" },
-  { year: "2023", title: "Camp Projects", desc: "Delivered first 15,000-person camp" },
+  { year: "2023", title: "Camp Projects", desc: "Delivered first 1,000-person camp" },
   { year: "2026", title: "Today", desc: "7 Divisions, 50+ projects, KSA-wide operations" },
 ];
 
