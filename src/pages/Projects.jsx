@@ -97,7 +97,7 @@ export default function Projects() {
                 Showcasing our track record across construction, engineering, IT, catering, and logistics in Saudi Arabia.
               </p>
               <div className="flex gap-8 mt-8">
-                {[{ v: "50+", l: "Projects" }, { v: "KSA", l: "Nationwide" }, { v: "15+", l: "Years" }].map(s => (
+                {[{ v: "50+", l: "Projects" }, { v: "KSA", l: "Nationwide" }, { v: "7+", l: "Years" }].map(s => (
                   <motion.div key={s.l} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}>
                     <p className="font-sora text-2xl font-bold text-secondary">{s.v}</p>
                     <p className="text-white/50 text-xs mt-0.5">{s.l}</p>
