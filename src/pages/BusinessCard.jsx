@@ -111,7 +111,7 @@ async function drawCard(canvas, fields) {
   ctx.closePath(); ctx.fill();
   ctx.restore();
 
-  const logoSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 44" width="240" height="53">
+  const logoSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 44" width="288" height="64">
     <g transform="translate(0,2)">
       <polygon points="20,0 40,20 20,40 0,20" fill="none" stroke="#E8832A" stroke-width="2"/>
       <polygon points="20,8 32,20 20,32 8,20" fill="#E8832A" opacity="0.2"/>
@@ -129,18 +129,18 @@ async function drawCard(canvas, fields) {
   const logoUrl = URL.createObjectURL(logoBlob);
   await new Promise((resolve) => {
     const img = new Image();
-    img.onload = () => { ctx.drawImage(img, CARD_W - 52 - 240, 36, 240, 53); URL.revokeObjectURL(logoUrl); resolve(); };
+    img.onload = () => { ctx.drawImage(img, CARD_W - 52 - 288, 30, 288, 64); URL.revokeObjectURL(logoUrl); resolve(); };
     img.src = logoUrl;
   });
 
   const rPad = CARD_W - PAD;
   ctx.textAlign = "right";
   ctx.fillStyle = "#1a2340";
-  ctx.font = "600 22px 'Open Sans'";
-  ctx.fillText("DISTINCT MARK CO.", rPad, CARD_H / 2 + 14);
+  ctx.font = "600 26px 'Open Sans'";
+  ctx.fillText("DISTINCT MARK CO.", rPad, CARD_H / 2 + 18);
   ctx.fillStyle = "#E8832A";
-  ctx.font = "600 19px 'Open Sans'";
-  ctx.fillText("BUILDING EXCELLENCE", rPad, CARD_H / 2 + 40);
+  ctx.font = "600 23px 'Open Sans'";
+  ctx.fillText("BUILDING EXCELLENCE", rPad, CARD_H / 2 + 48);
   ctx.textAlign = "left";
 
   const qrUrl = website ? (website.startsWith("http") ? website : "https://" + website) : "https://www.distinctmark.net";
@@ -163,11 +163,11 @@ async function drawCard(canvas, fields) {
 
   ctx.textAlign = "right";
   ctx.fillStyle = "#1a2340";
-  ctx.font = "700 19px 'Open Sans'";
-  ctx.fillText("SCAN TO VISIT", CARD_W - PAD - 110 - 18 - 4, CARD_H - 68);
+  ctx.font = "700 23px 'Open Sans'";
+  ctx.fillText("SCAN TO VISIT", CARD_W - PAD - 110 - 18 - 4, CARD_H - 66);
   ctx.fillStyle = "#888888";
-  ctx.font = "400 18px 'Open Sans'";
-  ctx.fillText(website || "www.distinctmark.net", CARD_W - PAD - 110 - 18 - 4, CARD_H - 47);
+  ctx.font = "400 22px 'Open Sans'";
+  ctx.fillText(website || "www.distinctmark.net", CARD_W - PAD - 110 - 18 - 4, CARD_H - 40);
   ctx.textAlign = "left";
 }
 
