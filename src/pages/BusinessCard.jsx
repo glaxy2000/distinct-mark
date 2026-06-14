@@ -63,7 +63,7 @@ async function drawCard(canvas, fields) {
   const PAD = 52;
 
   ctx.fillStyle = "#FFFFFF";
-  ctx.font = "800 48px 'Open Sans'";
+  ctx.font = "800 43px 'Open Sans'";
   ctx.fillText((name || "YOUR NAME").toUpperCase(), PAD, 215);
 
   ctx.fillStyle = "#E8832A";
