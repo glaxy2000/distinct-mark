@@ -30,9 +30,9 @@ async function drawCard(canvas, fields) {
   canvas.width = CARD_W;
   canvas.height = CARD_H;
 
-  await document.fonts.load("800 46px 'Open Sans'");
-  await document.fonts.load("700 14px 'Open Sans'");
-  await document.fonts.load("400 14px 'Open Sans'");
+  await document.fonts.load("800 60px 'Open Sans'");
+  await document.fonts.load("700 18px 'Open Sans'");
+  await document.fonts.load("400 18px 'Open Sans'");
 
   // LEFT DARK PANEL
   ctx.fillStyle = "#1a2340";
@@ -63,15 +63,15 @@ async function drawCard(canvas, fields) {
   const PAD = 52;
 
   ctx.fillStyle = "#FFFFFF";
-  ctx.font = "800 46px 'Open Sans'";
-  ctx.fillText((name || "YOUR NAME").toUpperCase(), PAD, 200);
+  ctx.font = "800 60px 'Open Sans'";
+  ctx.fillText((name || "YOUR NAME").toUpperCase(), PAD, 215);
 
   ctx.fillStyle = "#E8832A";
   ctx.fillRect(PAD, 222, 52, 3);
 
   ctx.fillStyle = "#E8832A";
-  ctx.font = "700 14px 'Open Sans'";
-  ctx.fillText((position || "YOUR POSITION").toUpperCase(), PAD, 258);
+  ctx.font = "700 18px 'Open Sans'";
+  ctx.fillText((position || "YOUR POSITION").toUpperCase(), PAD, 280);
 
   const contacts = [
     mobile || "+966 55 000 0000",
@@ -80,13 +80,13 @@ async function drawCard(canvas, fields) {
     address || "Riyadh, Saudi Arabia",
   ];
 
-  ctx.font = "400 14px 'Open Sans'";
+  ctx.font = "400 18px 'Open Sans'";
   ctx.fillStyle = "rgba(255,255,255,0.82)";
-  contacts.forEach((c, i) => { ctx.fillText(c, PAD + 6, 310 + i * 38); });
+  contacts.forEach((c, i) => { ctx.fillText(c, PAD + 6, 335 + i * 42); });
   contacts.forEach((_, i) => {
     ctx.fillStyle = "#E8832A";
     ctx.beginPath();
-    ctx.arc(PAD - 8, 305 + i * 38, 3.5, 0, Math.PI * 2);
+    ctx.arc(PAD - 8, 330 + i * 42, 3.5, 0, Math.PI * 2);
     ctx.fill();
   });
 
@@ -136,11 +136,11 @@ async function drawCard(canvas, fields) {
   const rPad = CARD_W - PAD;
   ctx.textAlign = "right";
   ctx.fillStyle = "#1a2340";
-  ctx.font = "600 13px 'Open Sans'";
-  ctx.fillText("DISTINCT MARK CO.", rPad, CARD_H / 2 + 8);
+  ctx.font = "600 16px 'Open Sans'";
+  ctx.fillText("DISTINCT MARK CO.", rPad, CARD_H / 2 + 10);
   ctx.fillStyle = "#E8832A";
-  ctx.font = "600 11px 'Open Sans'";
-  ctx.fillText("BUILDING EXCELLENCE", rPad, CARD_H / 2 + 28);
+  ctx.font = "600 14px 'Open Sans'";
+  ctx.fillText("BUILDING EXCELLENCE", rPad, CARD_H / 2 + 32);
   ctx.textAlign = "left";
 
   const qrUrl = website ? (website.startsWith("http") ? website : "https://" + website) : "https://www.distinctmark.net";
@@ -163,11 +163,11 @@ async function drawCard(canvas, fields) {
 
   ctx.textAlign = "right";
   ctx.fillStyle = "#1a2340";
-  ctx.font = "700 11px 'Open Sans'";
-  ctx.fillText("SCAN TO VISIT", CARD_W - PAD - 110 - 18 - 4, CARD_H - 74);
+  ctx.font = "700 14px 'Open Sans'";
+  ctx.fillText("SCAN TO VISIT", CARD_W - PAD - 110 - 18 - 4, CARD_H - 70);
   ctx.fillStyle = "#888888";
-  ctx.font = "400 10px 'Open Sans'";
-  ctx.fillText(website || "www.distinctmark.net", CARD_W - PAD - 110 - 18 - 4, CARD_H - 58);
+  ctx.font = "400 13px 'Open Sans'";
+  ctx.fillText(website || "www.distinctmark.net", CARD_W - PAD - 110 - 18 - 4, CARD_H - 52);
   ctx.textAlign = "left";
 }
 
