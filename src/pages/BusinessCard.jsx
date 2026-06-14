@@ -111,7 +111,7 @@ async function drawCard(canvas, fields) {
   ctx.closePath(); ctx.fill();
   ctx.restore();
 
-  const logoSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 44" width="317" height="70">
+  const logoSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 44" width="349" height="77">
     <g transform="translate(0,2)">
       <polygon points="20,0 40,20 20,40 0,20" fill="none" stroke="#E8832A" stroke-width="2"/>
       <polygon points="20,8 32,20 20,32 8,20" fill="#E8832A" opacity="0.2"/>
@@ -129,7 +129,7 @@ async function drawCard(canvas, fields) {
   const logoUrl = URL.createObjectURL(logoBlob);
   await new Promise((resolve) => {
     const img = new Image();
-    img.onload = () => { ctx.drawImage(img, CARD_W - 52 - 317, 26, 317, 70); URL.revokeObjectURL(logoUrl); resolve(); };
+    img.onload = () => { ctx.drawImage(img, CARD_W - 52 - 349, 22, 349, 77); URL.revokeObjectURL(logoUrl); resolve(); };
     img.src = logoUrl;
   });
 
