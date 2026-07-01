@@ -346,6 +346,7 @@ export default function CompanyProfile() {
   const [progress, setProgress] = useState(0);
   const [imagesReady, setImagesReady] = useState(false);
   const slidesRef = useRef({});
+  const captureRef = useRef(null);
 
   // Preload all images (crossOrigin) so html2canvas can capture them
   useEffect(() => {
@@ -366,6 +367,9 @@ export default function CompanyProfile() {
     try {
       const pdf = new jsPDF({ orientation: "landscape", unit: "mm", format: "a4" });
       const W = 297, H = 210;
+      // Temporarily make the capture container visible so html2canvas renders text
+      const capture = captureRef.current;
+      if (capture) capture.style.opacity = "1";
       for (let i = 0; i < SLIDES.length; i++) {
         const el = slidesRef.current[SLIDES[i].id];
         if (!el) continue;
@@ -383,6 +387,7 @@ export default function CompanyProfile() {
         pdf.addImage(imgData, "JPEG", 0, 0, W, H);
         setProgress(Math.round(((i + 1) / SLIDES.length) * 100));
       }
+      if (capture) capture.style.opacity = "0";
       pdf.save("Distinct_Mark_Company_Profile_2025.pdf");
     } catch (err) {
       console.error(err);
@@ -459,8 +464,8 @@ export default function CompanyProfile() {
         </div>
       </div>
 
-      {/* Hidden full-size slides for clean PDF capture (no transform/scale ancestor) */}
-      <div aria-hidden="true" style={{ position: "absolute", left: "-99999px", top: 0, width: "297mm", pointerEvents: "none" }}>
+      {/* Hidden full-size slides for clean PDF capture (on-screen but behind everything) */}
+      <div ref={captureRef} aria-hidden="true" style={{ position: "absolute", left: 0, top: 0, width: "297mm", pointerEvents: "none", opacity: 0, zIndex: -9999 }}>
         {SLIDES.map((slide) => (
           <div key={slide.id} ref={(el) => { if (el) slidesRef.current[slide.id] = el; }}>
             {slide.render()}
