@@ -109,9 +109,9 @@ function SlideMissionVision() {
 
 function SlideWorkerServices() {
   const services = [
-    { icon: "🏠", title: "Housing", subtitle: "Labour Camp Construction & Accommodation", desc: "Move-in-ready accommodation in every city you operate in. We design, build, and maintain fully equipped worker camps — from modular units to large-scale facilities for up to 15,000+ residents.", points: ["Full camp design & construction", "Furnished & fully equipped rooms", "24/7 maintenance & facility management", "Camp operations for 15,000+ residents", "Compliant with Saudi labour housing standards"] },
-    { icon: "🚌", title: "Transportation", subtitle: "Staff & Equipment Logistics", desc: "Fixed daily routes that get every worker to every site on time. Our dedicated fleet provides reliable, safe, and punctual transportation across the Kingdom.", points: ["Dedicated daily routes to all sites", "Air-conditioned modern fleet", "Heavy equipment haulage", "24/7 logistics coordination", "GPS-tracked vehicles for safety"] },
-    { icon: "🍽️", title: "Catering", subtitle: "Industrial & Camp Catering Services", desc: "Three nutritious meals a day, multiple cuisines, delivered directly to your buildings. Our catering teams serve thousands of workers daily with quality and consistency.", points: ["Three meals daily — breakfast, lunch, dinner", "Multiple cuisine options available", "ISO-compliant kitchen operations", "Nutritionist-approved meal plans", "Direct delivery to camp buildings"] },
+    { icon: "🏠", title: "Housing", subtitle: "Labour Camp Construction & Accommodation", image: IMAGES.housing, desc: "Move-in-ready accommodation in every city you operate in. We design, build, and maintain fully equipped worker camps — from modular units to large-scale facilities for up to 15,000+ residents.", points: ["Full camp design & construction", "Furnished & fully equipped rooms", "24/7 maintenance & facility management", "Camp operations for 15,000+ residents", "Compliant with Saudi labour housing standards"] },
+    { icon: "🚌", title: "Transportation", subtitle: "Staff & Equipment Logistics", image: IMAGES.buses, desc: "Fixed daily routes that get every worker to every site on time. Our dedicated fleet provides reliable, safe, and punctual transportation across the Kingdom.", points: ["Dedicated daily routes to all sites", "Air-conditioned modern fleet", "Heavy equipment haulage", "24/7 logistics coordination", "GPS-tracked vehicles for safety"] },
+    { icon: "🍽️", title: "Catering", subtitle: "Industrial & Camp Catering Services", image: IMAGES.mealDelivery, desc: "Three nutritious meals a day, multiple cuisines, delivered directly to your buildings. Our catering teams serve thousands of workers daily with quality and consistency.", points: ["Three meals daily — breakfast, lunch, dinner", "Multiple cuisine options available", "ISO-compliant kitchen operations", "Nutritionist-approved meal plans", "Direct delivery to camp buildings"] },
   ];
   return (
     <PageWrapper style={{ background: LIGHT_BG }}>
@@ -125,12 +125,14 @@ function SlideWorkerServices() {
       <div style={{ display: "flex", gap: 16, padding: "0 40px" }}>
         {services.map((s, i) => (
           <div key={i} style={{ flex: 1, background: "white", borderRadius: 10, overflow: "hidden", boxShadow: "0 4px 20px rgba(0,0,0,0.08)" }}>
-            <div style={{ background: NAVY, padding: "18px 20px", display: "flex", alignItems: "center", gap: 12 }}>
-              <div style={{ fontSize: 24 }}>{s.icon}</div>
-              <div>
-                <div style={{ fontSize: 16, fontWeight: 800, color: "white" }}>{s.title}</div>
-                <div style={{ fontSize: 9, color: ORANGE, letterSpacing: 1 }}>{s.subtitle}</div>
-              </div>
+            <div style={{ position: "relative", height: 120, overflow: "hidden" }}>
+              <img src={s.image} crossOrigin="anonymous" alt={s.title} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+              <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(26,35,64,0.1) 0%, rgba(26,35,64,0.55) 100%)" }} />
+              <div style={{ position: "absolute", bottom: 10, left: 14, background: ORANGE, color: "white", fontSize: 13, fontWeight: 800, padding: "4px 14px", borderRadius: 5 }}>{s.title}</div>
+            </div>
+            <div style={{ background: NAVY, padding: "12px 20px", display: "flex", alignItems: "center", gap: 12 }}>
+              <div style={{ fontSize: 20 }}>{s.icon}</div>
+              <div style={{ fontSize: 9, color: ORANGE, letterSpacing: 1 }}>{s.subtitle}</div>
             </div>
             <div style={{ padding: "16px 20px" }}>
               <div style={{ fontSize: 11, color: "#4a5568", lineHeight: 1.7, marginBottom: 12 }}>{s.desc}</div>

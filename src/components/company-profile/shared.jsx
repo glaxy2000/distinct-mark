@@ -16,6 +16,9 @@ export const IMAGES = {
   catering: "https://media.base44.com/images/public/69fc5488f82bfea7ed1807c9/539eec9fa_generated_image.png",
   truck: "https://media.base44.com/images/public/69fc5488f82bfea7ed1807c9/6bfd6cde8_generated_image.png",
   officeDesk: "https://media.base44.com/images/public/69fc5488f82bfea7ed1807c9/38c088030_generated_image.png",
+  housing: "https://media.base44.com/images/public/69fc5488f82bfea7ed1807c9/cfa266464_generated_image.png",
+  buses: "https://media.base44.com/images/public/69fc5488f82bfea7ed1807c9/4ef55f71c_generated_image.png",
+  mealDelivery: "https://media.base44.com/images/public/69fc5488f82bfea7ed1807c9/86949a023_generated_image.png",
 };
 
 export const ALL_IMAGE_URLS = Object.values(IMAGES);
