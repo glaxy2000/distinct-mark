@@ -369,7 +369,15 @@ export default function CompanyProfile() {
       for (let i = 0; i < SLIDES.length; i++) {
         const el = slidesRef.current[SLIDES[i].id];
         if (!el) continue;
-        const canvas = await html2canvas(el, { scale: 2, useCORS: true, logging: false, width: el.offsetWidth, height: el.offsetHeight });
+        // Capture from the hidden full-size element (no transform ancestor)
+        const canvas = await html2canvas(el, {
+          scale: 2,
+          useCORS: true,
+          logging: false,
+          backgroundColor: "#ffffff",
+          windowWidth: el.scrollWidth,
+          windowHeight: el.scrollHeight,
+        });
         const imgData = canvas.toDataURL("image/jpeg", 0.94);
         if (i > 0) pdf.addPage();
         pdf.addImage(imgData, "JPEG", 0, 0, W, H);
@@ -437,9 +445,7 @@ export default function CompanyProfile() {
                     }
                   }}>
                   <div style={{ position: "absolute", top: 0, left: 0, width: "297mm", transformOrigin: "top left" }}>
-                    <div ref={(el) => { if (el) slidesRef.current[slide.id] = el; }}>
-                      {slide.render()}
-                    </div>
+                    {slide.render()}
                   </div>
                 </div>
               </div>
@@ -451,6 +457,15 @@ export default function CompanyProfile() {
           <DownloadBtn large />
           <p className="text-xs text-gray-400 mt-2">A4 landscape · {SLIDES.length} slides · High resolution</p>
         </div>
+      </div>
+
+      {/* Hidden full-size slides for clean PDF capture (no transform/scale ancestor) */}
+      <div aria-hidden="true" style={{ position: "absolute", left: "-99999px", top: 0, width: "297mm", pointerEvents: "none" }}>
+        {SLIDES.map((slide) => (
+          <div key={slide.id} ref={(el) => { if (el) slidesRef.current[slide.id] = el; }}>
+            {slide.render()}
+          </div>
+        ))}
       </div>
     </div>
   );
