@@ -6,7 +6,7 @@ export const LIGHT_BG = "#f0f2f7";
 
 // Shared image assets (generated, CORS-safe on base44 media)
 export const IMAGES = {
-  ceo: "https://media.base44.com/images/public/69fc5488f82bfea7ed1807c9/2d949043a_generated_image.png",
+  ceo: "https://media.base44.com/images/public/69fc5488f82bfea7ed1807c9/44c5daef1_Mohmmad.jpg",
   skylineNight: "https://media.base44.com/images/public/69fc5488f82bfea7ed1807c9/ee4896d77_generated_image.png",
   construction: "https://media.base44.com/images/public/69fc5488f82bfea7ed1807c9/0d12b58a4_generated_image.png",
   cityAerial: "https://media.base44.com/images/public/69fc5488f82bfea7ed1807c9/c71201d1e_generated_image.png",
