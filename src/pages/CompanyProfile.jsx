@@ -305,74 +305,48 @@ function SlideWorkerServices() {
 }
 
 // Slide 6: CEO & Leadership
-const CEO_PHOTO = "https://media.base44.com/images/public/69fc5488f82bfea7ed1807c9/111613b20_generated_image.png";
-
 function SlideLeadership() {
   return (
     <PageWrapper style={{ display: "flex", background: LIGHT_BG }}>
-      {/* Left – photo panel */}
+      {/* Left – dark photo panel */}
       <div style={{
-        flex: "0 0 40%", background: NAVY, position: "relative",
-        display: "flex", flexDirection: "column", justifyContent: "flex-end", overflow: "hidden"
+        flex: "0 0 42%", background: NAVY, position: "relative",
+        display: "flex", flexDirection: "column", justifyContent: "flex-end"
       }}>
-        {/* Portrait photo */}
-        <img src={CEO_PHOTO} crossOrigin="anonymous" alt="CEO"
-          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }} />
-        {/* Navy gradient overlay */}
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(26,35,64,0.35) 0%, rgba(26,35,64,0.1) 45%, rgba(26,35,64,0.85) 100%)" }} />
-        {/* LEADERSHIP label top */}
-        <div style={{ position: "absolute", top: 28, left: 32, zIndex: 2 }}>
-          <div style={{ fontSize: 10, letterSpacing: 4, color: ORANGE, fontWeight: 700 }}>LEADERSHIP</div>
-          <div style={{ width: 30, height: 3, background: ORANGE, marginTop: 6 }} />
+        <div style={{ position: "absolute", inset: 0, opacity: 0.05, backgroundImage: `repeating-linear-gradient(45deg,white 0,white 1px,transparent 1px,transparent 28px)` }} />
+        <div style={{ padding: 32, position: "relative", zIndex: 1 }}>
+          <div style={{ fontSize: 10, letterSpacing: 4, color: ORANGE, fontWeight: 700, marginBottom: 8 }}>LEADERSHIP</div>
         </div>
-        {/* Orange name bar bottom */}
-        <div style={{ background: ORANGE, padding: "14px 32px", position: "relative", zIndex: 2 }}>
-          <div style={{ fontSize: 15, fontWeight: 800, color: "white" }}>Mohammed Ayidh Almutari</div>
-          <div style={{ fontSize: 10, fontWeight: 600, color: "rgba(255,255,255,0.9)", letterSpacing: 2, marginTop: 2 }}>CEO & FOUNDER</div>
+        <div style={{ background: ORANGE, padding: "14px 32px" }}>
+          <div style={{ fontSize: 11, fontWeight: 700, color: "white", letterSpacing: 3 }}>CEO & FOUNDER</div>
         </div>
       </div>
       {/* Right */}
-      <div style={{ flex: 1, padding: "38px 40px", position: "relative" }}>
+      <div style={{ flex: 1, padding: "40px 40px", position: "relative" }}>
         <div style={{ position: "absolute", top: 20, right: 20 }}>
-          <LogoSVG size={24} dark={false} />
+          <LogoSVG size={26} dark={false} />
         </div>
-        <div style={{ fontSize: 11, fontWeight: 700, color: ORANGE, letterSpacing: 5, marginBottom: 6 }}>MESSAGE FROM LEADERSHIP</div>
-        <div style={{ width: 36, height: 3, background: ORANGE, marginBottom: 18 }} />
-        <div style={{ fontSize: 26, fontWeight: 800, color: NAVY, lineHeight: 1.2 }}>Mohammed Ayidh Almutari</div>
-        <div style={{ fontSize: 10, fontWeight: 700, color: ORANGE, letterSpacing: 2, marginTop: 6, marginBottom: 16 }}>
+        <div style={{ width: 36, height: 3, background: ORANGE, marginBottom: 24 }} />
+        <div style={{ fontSize: 30, fontWeight: 800, color: NAVY }}>Mohammed Ayidh<br />Almutari</div>
+        <div style={{ fontSize: 10, fontWeight: 700, color: ORANGE, letterSpacing: 3, marginTop: 8, marginBottom: 20 }}>
           CEO & FOUNDER — DISTINCT MARK GROUP
         </div>
-        <div style={{ fontSize: 11.5, color: "#4a5568", lineHeight: 1.75 }}>
-          Mohammed is the founder and driving force behind Distinct Mark — a multi-disciplinary services group
+        <div style={{ fontSize: 12, color: "#4a5568", lineHeight: 1.8 }}>
+          Mohammad is the founder and driving force behind Distinct Mark — a multi-disciplinary services group
           headquartered in Riyadh. With a bold entrepreneurial spirit and deep understanding of the Kingdom's
           industrial landscape, he built Distinct Mark from the ground up into a diversified enterprise spanning
           seven key divisions.
         </div>
-        <div style={{ marginTop: 12, fontSize: 11.5, color: "#4a5568", lineHeight: 1.75 }}>
+        <div style={{ marginTop: 14, fontSize: 12, color: "#4a5568", lineHeight: 1.8 }}>
           Under his leadership, Distinct Mark has delivered over 50+ projects across construction, electrical &
           mechanical, IT, catering, trading, transportation, and equipment rental — establishing the company
           as a trusted partner for major industrial and infrastructure projects across the Kingdom.
         </div>
-        {/* Leadership qualities */}
-        <div style={{ marginTop: 16, display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px 20px" }}>
-          {[
-            "Visionary Entrepreneurial Leadership",
-            "Deep Industry & Market Expertise",
-            "Commitment to Safety & Quality",
-            "Vision 2030 Aligned Growth Strategy",
-          ].map((q, i) => (
-            <div key={i} style={{ display: "flex", alignItems: "center", gap: 8 }}>
-              <div style={{ width: 6, height: 6, borderRadius: "50%", background: ORANGE, flexShrink: 0 }} />
-              <div style={{ fontSize: 10.5, color: NAVY, fontWeight: 600 }}>{q}</div>
-            </div>
-          ))}
-        </div>
-        {/* Stats */}
-        <div style={{ marginTop: 18, display: "flex", gap: 12 }}>
-          {[["50+", "Projects Delivered"], ["7", "Business Divisions"], ["60+", "Team Members"], ["7+", "Years Leadership"]].map(([v, l], i) => (
-            <div key={i} style={{ flex: 1, textAlign: "center", background: NAVY, borderRadius: 8, padding: "12px 8px" }}>
-              <div style={{ fontSize: 22, fontWeight: 900, color: ORANGE }}>{v}</div>
-              <div style={{ fontSize: 8.5, color: "rgba(255,255,255,0.75)", letterSpacing: 0.5, marginTop: 3 }}>{l}</div>
+        <div style={{ marginTop: 20, display: "flex", gap: 16 }}>
+          {[["50+", "Projects Delivered"], ["7", "Business Divisions"], ["7+", "Years of Leadership"]].map(([v, l], i) => (
+            <div key={i} style={{ textAlign: "center", background: LIGHT_BG, borderRadius: 8, padding: "12px 16px", border: `1px solid ${ORANGE}22` }}>
+              <div style={{ fontSize: 20, fontWeight: 900, color: ORANGE }}>{v}</div>
+              <div style={{ fontSize: 9, color: NAVY, letterSpacing: 1, marginTop: 2 }}>{l}</div>
             </div>
           ))}
         </div>
